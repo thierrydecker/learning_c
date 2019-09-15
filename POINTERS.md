@@ -201,9 +201,170 @@ variable is different from the address inside it—thus, the middle expression, 
 two expressions. The three expressions are all equal only when array really is an array.)
 
 ## Pointer arithmetic (or: why 1 == 4)
+
+Say we want to print out all three elements of array.
+
+```
+int *array_ptr = array;
+printf(" first element: %i\n", *(array_ptr++));
+printf("second element: %i\n", *(array_ptr++));
+printf(" third element: %i\n", *array_ptr);
+```
+```
+first element: 45
+second element: 67
+third element: 89
+```
+
+In case you're not familiar with the ++ operator: it adds 1 to a variable, the same as variable += 1 (remember that
+because we used the postfix expression array_ptr++, rather than the prefix expression ++array_ptr, the expression 
+evaluated to the value of array_ptr from before it was incremented rather than after).
+
+But what did we do with it here?
+
+Well, the type of a pointer matters. The type of the pointer here is int. When you add to or subtract from a pointer,
+the amount by which you do that is multiplied by the size of the type of the pointer. In the case of our three 
+increments, each 1 that you added was multiplied by sizeof(int).
+
+By the way, though sizeof(void) is illegal, void pointers are incremented or decremented by 1 byte.
+
+In case you're wondering about 1 == 4: Remember that earlier, I mentioned that ints are four bytes on current
+Intel processors. So, on a machine with such a processor, adding 1 to or subtracting 1 from an int pointer changes
+it by four bytes. Hence, 1 == 4. (Programmer humor.).
+
 ## Indexing
+
+```
+int array[] = { 45, 67, 89 };
+printf("%i\n", array[0]);
+```
+
+OK… what just happened?
+
+This happened:
+
+```
+45
+```
+
+Well, you probably figured that. But what does this have to do with pointers?
+
+This is another one of those secrets of C. The subscript operator (the [] in array[0]) has nothing to do with arrays.
+
+Oh, sure, that's its most common usage. But remember that, in most contexts, arrays decay to pointers. This is one of them: That's a pointer you passed to that operator, not an array.
+
+As evidence, I submit:
+
+```
+int array[] = { 45, 67, 89 };
+int *array_ptr = &array[1];
+printf("%i\n", array_ptr[1]);
+```
+
+```
+89
+```
+
+That one might bend the brain a little. Here's a diagram:
+
+![Arrays in memory](images/array_indexing.png)
+
+![Arrays in memory](images/pointer_to_array_element.png)
+
+array points to the first element of the array; array_ptr is set to &array[1], so it points to the second element of
+the array. So array_ptr[1] is equivalent to array[2] (array_ptr starts at the second element of the array, so the 
+second element of array_ptr is the third element of the array).
+
+Also, you might notice that because the first element is sizeof(int) bytes wide (being an int), the second element 
+is sizeof(int) bytes forward of the start of the array. You are correct: array[1] is equivalent to *(array + 1). 
+(Remember that the number added to or subtracted from a pointer is multiplied by the size of the pointer's type, so 
+that “1” adds sizeof(int) bytes to the pointer value.)
+
 ## Interlude: Structures and unions
+
+Two of the more interesting kinds of types in C are structures and unions. You create a structure type with the 
+struct keyword, and a union type with the union keyword.
+
+The exact definitions of these types are beyond the scope of this article. Suffice to say that a declaration of a 
+struct or union looks like this:
+
+```
+struct foo {
+  size_t size;
+  char name[64];
+  int answer_to_ultimate_question;
+  unsigned shoe_size;
+};
+```
+
+Each of those declarations inside the block is called a member. Unions have members too, but they're used differently. 
+
+Accessing a member looks like this:
+
+```
+struct foo my_foo;
+my_foo.size = sizeof(struct foo);
+```
+
+The expression my_foo.size accesses the member size of my_foo.
+
+So what do you do if you have a pointer to a structure?
+
+One way to do it
+
+```
+(*foo_ptr).size = new_size;
+```
+
+But there is a better way, specifically for this purpose: the pointer-to-member operator.
+
+Yummy:
+
+```
+foo_ptr->size = new_size;
+```
+
+Unfortunately, it doesn't look as good with multiple indirection.
+
+Icky:
+
+```
+(*foo_ptr_ptr)->size = new_size; One way
+(**foo_ptr_ptr).size = new_size; or another
+```
+
+Rant: Pascal does this much better. Its dereference operator is a postfix ^:
+
+```
+foo_ptr_ptr^^.size := new_size;
+```
+
+(But putting aside this complaint, C is a much better language.)
+
 ## Multiple indirection
+
+I want to explain multiple indirection a bit further.
+
+Consider the following code:
+
+```
+int    a =  3;
+int   *b = &a;
+int  **c = &b;
+int ***d = &c;
+```
+
+Here are how the values of these pointers equate to each other:
+
+```
+  *d ==   c; // Dereferencing an (int ***) once gets you an (int **) (3 - 1 = 2)
+ **d ==  *c ==  b; // Dereferencing an (int ***) twice, or an (int **) once, gets you an (int *) (3 - 2 = 1; 2 - 1 = 1)
+***d == **c == *b == a == 3; // Dereferencing an (int ***) thrice, or an (int **) twice, or an (int *) once, gets you an int (3 - 3 = 0; 2 - 2 = 0; 1 - 1 = 0)
+```
+
+Thus, the & operator can be thought of as adding asterisks (increasing pointer level, as I call it), and the *, ->, 
+and [] operators as removing asterisks (decreasing pointer level).
+
 ## Pointers and const
 ## Function pointers
 ## Strings (and why there is no such thing)
