@@ -162,6 +162,44 @@ lvalue, meaning that it can appear on the left side of an assignment):
 (This is called a “store” operation.).
 
 ## Interlude: Arrays
+
+Here's a declaration of a three-int array:
+
+```
+int array[] = { 45, 67, 89 };
+```
+
+Note that we use the [] notation because we are declaring an array. `int *array` would be illegal here; the compiler 
+would not accept us assigning the { 45, 67, 89 } initializer to it.
+
+This variable, array, is an extra-big box: three ints' worth of storage.
+
+One neat feature of C is that, in most places, when you use the name array again, you will actually be using a pointer
+to its first element (in C terms, `&array[0]`). This is called “decaying”: the array “decays” to a pointer. Most usages 
+of array are equivalent to if array had been declared as a pointer.
+
+There are, of course, cases that aren't equivalent. One is assigning to the name array by itself (array = …)
+—that's illegal.
+
+Another is passing it to the sizeof operator. The result will be the total size of the array, not the size of a 
+pointer (for example, sizeof(array) using the array above would evaluate to (sizeof(int) = 4) × 3 = 12 on a current Mac OS X system). This illustrates that you are really handling an array and not merely a pointer.
+
+In most uses, however, array expressions work just the same as pointer expressions.
+
+So, for example, let's say you want to pass an array to printf. You can't: When you pass an array as an argument
+to a function, you really pass a pointer to the array's first element, because the array decays to a pointer. 
+You can only give printf the pointer, not the whole array. (This is why printf has no way to print an array: It would
+need you to tell it the type of what's in the array and how many elements there are, and both the format string and
+the list of arguments would quickly get confusing.)
+
+Decaying is an implicit &; `array == &array == &array[0]`. In English, these expressions read “array”,
+“pointer to array”, and “pointer to the first element of array” (the subscript operator, [], has higher precedence 
+than the address-of operator). But in C, all three expressions mean the same thing.
+
+(They would not all mean the same thing if “array” were actually a pointer variable, since the address of a pointer
+variable is different from the address inside it—thus, the middle expression, `&array`, would not be equal to the other
+two expressions. The three expressions are all equal only when array really is an array.)
+
 ## Pointer arithmetic (or: why 1 == 4)
 ## Indexing
 ## Interlude: Structures and unions
