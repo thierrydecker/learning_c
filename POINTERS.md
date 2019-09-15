@@ -366,5 +366,220 @@ Thus, the & operator can be thought of as adding asterisks (increasing pointer l
 and [] operators as removing asterisks (decreasing pointer level).
 
 ## Pointers and const
+
+The const keyword is used a bit differently when pointers are involved. These two declarations are equivalent:
+
+```
+const int *ptr_a;
+int const *ptr_a;
+```
+
+These two, however, are not equivalent:
+
+```
+int const *ptr_a;
+int *const ptr_b;
+```
+
+In the first example, the int (i.e. *ptr_a) is const; you cannot do *ptr_a = 42. In the second example, the pointer 
+itself is const; you can change *ptr_b just fine, but you cannot change (using pointer arithmetic, e.g. ptr_b++) the 
+pointer itself.
+
 ## Function pointers
+
+Note: The syntax for all of this seems a bit exotic. It is. It confuses a lot of people, even C wizards. Bear with me.
+
+It's possible to take the address of a function, too. And, similarly to arrays, functions decay to pointers when their 
+names are used. So if you wanted the address of, say, strcpy, you could say either strcpy or &strcpy. (&strcpy[0] won't 
+work for obvious reasons.)
+
+When you call a function, you use an operator called the function call operator. The function call operator takes a 
+function pointer on its left side.
+
+In this example, we pass dst and src as the arguments on the interior, and strcpy as the function (that is, the 
+function pointer) to be called:
+
+```
+enum { str_length = 18U }; Remember the NUL terminator!
+char src[str_length] = "This is a string.", dst[str_length];
+
+strcpy(dst, src); The function call operator in action (notice the function pointer on the left side).
+```
+
+There's a special syntax for declaring variables whose type is a function pointer.
+
+```
+char *strcpy(char *dst, const char *src); An ordinary function declaration, for reference
+char *(*strcpy_ptr)(char *dst, const char *src); Pointer to strcpy-like function
+
+strcpy_ptr =  strcpy;
+strcpy_ptr = &strcpy; This works too
+strcpy_ptr = &strcpy[0]; But not this
+```
+
+Note the parentheses around *strcpy_ptr in the above declaration. These separate the asterisk indicating return type 
+(char *) from the asterisk indicating the pointer level of the variable (*strcpy_ptr — one level, pointer to function).
+
+Also, just like in a regular function declaration, the parameter names are optional:
+
+```
+char *(*strcpy_ptr_noparams)(char *, const char *) = strcpy_ptr; Parameter names removed — still the same type
+```
+
+The type of the pointer to strcpy is char *(*)(char *, const char *); you may notice that this is the declaration from
+ above, minus the variable name. You would use this in a cast. For example:
+
+```
+strcpy_ptr = (char *(*)(char *dst, const char *src))my_strcpy;
+```
+
+As you might expect, a pointer to a pointer to a function has two asterisks inside of the parentheses:
+
+```
+char *(**strcpy_ptr_ptr)(char *, const char *) = &strcpy_ptr;
+```
+
+We can have an array of function-pointers:
+
+```
+char *(*strcpies[3])(char *, const char *) = { strcpy, strcpy, strcpy };
+char *(*strcpies[])(char *, const char *) = { strcpy, strcpy, strcpy }; Array size is optional, same as ever
+
+strcpies[0](dst, src);
+```
+
+Here's a pathological declaration, taken from the C99 standard. “[This declaration] declares a function f with no 
+parameters returning an int, a function fip with no parameter specification returning a pointer to an int, and a 
+pointer pfi to a function with no parameter specification returning an int.” (6.7.5.3[16])
+
+```
+int f(void), *fip(), (*pfi)();
+```
+
+In other words, the above is equivalent to the following three declarations:
+
+```
+int f(void);
+int *fip(); Function returning int pointer
+int (*pfi)(); Pointer to function returning int
+```
+
+But if you thought that was mind-bending, brace yourself…
+
+A function pointer can even be the return value of a function. This part is really mind-bending, so stretch your brain 
+a bit so as not to risk injury.
+
+In order to explain this, I'm going to summarize all the declaration syntax you've learned so far. First, declaring a 
+pointer variable:
+
+```
+char *ptr;
+```
+
+This declaration tells us the pointer type (char), pointer level (*), and variable name (ptr). And the latter two can 
+go into parentheses:
+
+```
+char (*ptr);
+```
+
+What happens if we replace the variable name in the first declaration with a name followed by a set of parameters?
+
+```
+char *strcpy(char *dst, const char *src);
+```
+
+Huh. A function declaration.
+
+But we also removed the * indicating pointer level — remember that the * in this function declaration is part of the 
+return type of the function. So if we add the pointer-level asterisk back (using the parentheses):
+
+```
+char *(*strcpy_ptr)(char *dst, const char *src);
+```
+
+A function pointer variable!
+
+But wait a minute. If this is a variable, and the first declaration was also a variable, can we not replace the 
+variable name in THIS declaration with a name and a set of parameters?
+
+YES WE CAN! And the result is the declaration of a function that returns a function pointer:
+
+```
+char *(*get_strcpy_ptr(void))(char *dst, const char *src);
+```
+
+Remember that the type of a pointer to a function taking no arguments and returning int is int (*)(void). So the type 
+returned by this function is char *(*)(char *, const char *) (with, again, the inner * indicating a pointer, and the 
+outer * being part of the return type of the pointed-to function). You may remember that that is also the type of 
+strcpy_ptr.
+
+So this function, which is called with no parameters, returns a pointer to a strcpy-like function:
+
+```
+strcpy_ptr = get_strcpy_ptr();
+```
+
+Because function pointer syntax is so mind-bending, most developers use typedefs to abstract them:
+
+```
+typedef char *(*strcpy_funcptr)(char *, const char *);
+
+strcpy_funcptr strcpy_ptr = strcpy;
+strcpy_funcptr get_strcpy_ptr(void);
+```
+
 ## Strings (and why there is no such thing)
+
+There is no string type in C.
+
+Now you have two questions:
+
+- Why do I keep seeing references to “C strings” everywhere if there is no string type?
+- What does this have to do with pointers?
+
+The truth is, the concept of a “C string” is imaginary (except for string literals). There is no string type. C 
+strings are really just arrays of characters:
+
+```
+char str[] = "I am the Walrus";
+```
+
+This array is 16 bytes in length: 15 characters for "I am the Walrus", plus a NUL (byte value 0) terminator. In other 
+words, str[15] (the last element) is 0. This is how the end of the “string” is signaled.
+
+This idiom is the extent to which C has a string type. But that's all it is: an idiom. Except that it is supported by:
+
+- the aforementioned string literal syntax
+- the string library
+
+The functions in string.h are for string manipulation. But how can that be, if there is no string type?
+
+Why, they work on pointers.
+
+Here's one possible implementation of the simple function strlen, which returns the length of a string (not including 
+the NUL terminator):
+
+```
+size_t strlen(const char *str) { Note the pointer syntax here
+size_t len = 0U;
+while(*(str++)) ++len;
+  return len;
+}
+```
+
+Note the use of pointer arithmetic and dereferencing. That's because, despite the function's name, there is no “string” 
+here; there is merely a pointer to at least one character, the last one being 0.
+
+Here's another possible implementation:
+
+```
+size_t strlen(const char *str) {
+  size_t i;
+  for(i = 0U; str[i]; ++i);
+    //When the loop exits, i is the length of the string
+    return i;
+}
+```
+
+That one uses indexing. Which, as we found out earlier, uses a pointer (not an array, and definitely not a string).
