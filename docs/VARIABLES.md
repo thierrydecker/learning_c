@@ -138,15 +138,16 @@ its actual definition can be given anywhere else. For example:
 // function declaration
 int func();
 
-int main() {
-
-   // function call
-   int i = func();
+int main() 
+{
+  // function call
+  int i = func();
 }
 
 // function definition
-int func() {
-   return 0;
+int func() 
+{
+  return 0;
 }
 ```
 
