@@ -1,3 +1,5 @@
+# Environment setup
+
 If you want to set up your environment for C programming language, you need the following two software 
 tools available on your computer, (a) Text Editor and (b) The C Compiler.
 
