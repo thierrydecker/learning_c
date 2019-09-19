@@ -8,8 +8,7 @@
 - [Program structure](docs/PROGSTRUCT.md)
 - [Basic syntax](docs/BASICSYNTAX.md)
 - [Basic data types](docs/DATATYPES.md)
-
-
+- [Variables](docs/VARIABLES.md)
 - [Arrays](docs/ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)
 - [Pointers](docs/POINTERS.md)
