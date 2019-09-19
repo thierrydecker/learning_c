@@ -25,3 +25,48 @@ Programming:
 - Today C is the most widely used and popular System Programming Language.
 - Most of the state-of-the-art software have been implemented using C.
 - Today's most popular Linux OS and RDBMS MySQL have been written in C.
+
+## Hello World using C Programming.
+
+Just to give you a little excitement about C programming, I'm going to give you a small conventional 
+C Programming Hello World program.
+
+```
+#include <stdio.h>
+
+int main()
+{
+  /* my first program in C */
+  printf("Hello, World! \n");
+  return 0;
+}
+```
+
+## Applications of C Programming
+
+C was initially used for system development work, particularly the programs that make-up the 
+operating system. C was adopted as a system development language because it produces code that runs 
+nearly as fast as the code written in assembly language. Some examples of the use of C are:
+
+- Operating Systems
+- Language Compilers
+- Assemblers
+- Text Editors
+- Print Spoolers
+- Network Drivers
+- Modern Programs
+- Databases
+- Language Interpreters
+- Utilities
+
+## Audience
+
+This tutorial is designed for software programmers with a need to understand the C programming language
+starting from scratch. This C tutorial will give you enough understanding on C programming language 
+from where you can take yourself to higher level of expertise.
+
+## Prerequisites
+
+Before proceeding with this tutorial, you should have a basic understanding of Computer Programming 
+terminologies. A basic understanding of any of the programming languages will help you in understanding 
+the C programming concepts and move fast on the learning track.
