@@ -7,7 +7,7 @@
 - [Environment setup](docs/ENVSETUP.md)
 - [Program structure](docs/PROGSTRUCT.md)
 - [Basic syntax](docs/BASICSYNTAX.md)
-
+- [Basic data types](docs/DATATYPES.md)
 
 
 - [Arrays](docs/ARRAYS.md)
