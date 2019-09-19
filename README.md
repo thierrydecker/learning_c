@@ -9,6 +9,9 @@
 - [Basic syntax](docs/BASICSYNTAX.md)
 - [Basic data types](docs/DATATYPES.md)
 - [Variables](docs/VARIABLES.md)
+- [Constants/Literals](docs/LITERALS.md)
+
+## Annexes
 - [Arrays](docs/ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)
 - [Pointers](docs/POINTERS.md)
