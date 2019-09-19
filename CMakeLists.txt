@@ -3,4 +3,4 @@ project(arrays C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(arrays main.c)
+add_executable(arrays main.c src/array.h src/array.c)

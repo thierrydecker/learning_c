@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /home/tdecker/Documents/workspaces/c/learning-c/cmake-build-d
 CMakeFiles/arrays.dir/all:
 	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/depend
 	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target arrays"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target arrays"
 .PHONY : CMakeFiles/arrays.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/arrays.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/arrays.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/arrays.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/arrays.dir/rule

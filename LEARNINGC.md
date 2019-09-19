@@ -1,6 +1,6 @@
 # Learning C
 
-# Table of Contents
+## Table of Contents
 
 - [Arrays](docs/ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)

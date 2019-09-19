@@ -150,6 +150,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/main.c.s
 .PHONY : main.c.s
 
+src/array.o: src/array.c.o
+
+.PHONY : src/array.o
+
+# target to build an object file
+src/array.c.o:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.o
+.PHONY : src/array.c.o
+
+src/array.i: src/array.c.i
+
+.PHONY : src/array.i
+
+# target to preprocess a source file
+src/array.c.i:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.i
+.PHONY : src/array.c.i
+
+src/array.s: src/array.c.s
+
+.PHONY : src/array.s
+
+# target to generate assembly for a file
+src/array.c.s:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.s
+.PHONY : src/array.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/array.o"
+	@echo "... src/array.i"
+	@echo "... src/array.s"
 .PHONY : help
 
 
