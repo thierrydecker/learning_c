@@ -21,7 +21,7 @@ types:
 
     The most natural size of integer for the machine.
 
-- *float**
+- **float**
 
     A single-precision floating point value.
 
