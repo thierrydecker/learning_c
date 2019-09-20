@@ -158,7 +158,7 @@ Following table shows all the logical operators supported by C language. Assume 
 |Operator|Description|Example|
 |--------|-----------|-------|
 |&&|Called Logical AND operator. If both the operands are non-zero, then the condition becomes true.|(A && B) is false.|
-|&#124;|Called Logical OR Operator. If any of the two operands is non-zero, then the condition becomes true.| (A &#124;&#124; B) is true.|
+|&#124;&#124;|Called Logical OR Operator. If any of the two operands is non-zero, then the condition becomes true.| (A &#124;&#124; B) is true.|
 |!|Called Logical NOT Operator. It is used to reverse the logical state of its operand. If a condition is true, then Logical NOT operator will make it false.|!(A && B) is true.|
 
 ## Bitwise Operators
