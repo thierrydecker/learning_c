@@ -78,9 +78,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/main.c">
-			<Option target="arrays"/>
-		</Unit>
 		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/src/array.c">
 			<Option target="arrays"/>
 		</Unit>
@@ -91,6 +88,9 @@
 			<Option target="arrays"/>
 		</Unit>
 		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/src/extvars.h">
+			<Option target="arrays"/>
+		</Unit>
+		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/src/main.c">
 			<Option target="arrays"/>
 		</Unit>
 		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/CMakeLists.txt">

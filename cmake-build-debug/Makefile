@@ -123,33 +123,6 @@ arrays/fast:
 	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/build
 .PHONY : arrays/fast
 
-main.o: main.c.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/main.c.o
-.PHONY : main.c.o
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/main.c.s
-.PHONY : main.c.s
-
 src/array.o: src/array.c.o
 
 .PHONY : src/array.o
@@ -204,6 +177,33 @@ src/extvars.c.s:
 	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.s
 .PHONY : src/extvars.c.s
 
+src/main.o: src/main.c.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.c.o:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/main.c.o
+.PHONY : src/main.c.o
+
+src/main.i: src/main.c.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.c.i:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/main.c.i
+.PHONY : src/main.c.i
+
+src/main.s: src/main.c.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.c.s:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/main.c.s
+.PHONY : src/main.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,15 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... arrays"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... src/array.o"
 	@echo "... src/array.i"
 	@echo "... src/array.s"
 	@echo "... src/extvars.o"
 	@echo "... src/extvars.i"
 	@echo "... src/extvars.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

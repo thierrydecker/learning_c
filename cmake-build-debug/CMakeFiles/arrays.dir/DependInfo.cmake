@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/tdecker/Documents/workspaces/c/learning-c/main.c" "/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles/arrays.dir/main.c.o"
   "/home/tdecker/Documents/workspaces/c/learning-c/src/array.c" "/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles/arrays.dir/src/array.c.o"
   "/home/tdecker/Documents/workspaces/c/learning-c/src/extvars.c" "/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles/arrays.dir/src/extvars.c.o"
+  "/home/tdecker/Documents/workspaces/c/learning-c/src/main.c" "/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles/arrays.dir/src/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

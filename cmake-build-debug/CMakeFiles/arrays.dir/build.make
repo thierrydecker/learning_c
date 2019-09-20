@@ -57,18 +57,18 @@ include CMakeFiles/arrays.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/arrays.dir/flags.make
 
-CMakeFiles/arrays.dir/main.c.o: CMakeFiles/arrays.dir/flags.make
-CMakeFiles/arrays.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/arrays.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/arrays.dir/main.c.o   -c /home/tdecker/Documents/workspaces/c/learning-c/main.c
+CMakeFiles/arrays.dir/src/main.c.o: CMakeFiles/arrays.dir/flags.make
+CMakeFiles/arrays.dir/src/main.c.o: ../src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/arrays.dir/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/arrays.dir/src/main.c.o   -c /home/tdecker/Documents/workspaces/c/learning-c/src/main.c
 
-CMakeFiles/arrays.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/arrays.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tdecker/Documents/workspaces/c/learning-c/main.c > CMakeFiles/arrays.dir/main.c.i
+CMakeFiles/arrays.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/arrays.dir/src/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tdecker/Documents/workspaces/c/learning-c/src/main.c > CMakeFiles/arrays.dir/src/main.c.i
 
-CMakeFiles/arrays.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/arrays.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tdecker/Documents/workspaces/c/learning-c/main.c -o CMakeFiles/arrays.dir/main.c.s
+CMakeFiles/arrays.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/arrays.dir/src/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tdecker/Documents/workspaces/c/learning-c/src/main.c -o CMakeFiles/arrays.dir/src/main.c.s
 
 CMakeFiles/arrays.dir/src/array.c.o: CMakeFiles/arrays.dir/flags.make
 CMakeFiles/arrays.dir/src/array.c.o: ../src/array.c
@@ -98,14 +98,14 @@ CMakeFiles/arrays.dir/src/extvars.c.s: cmake_force
 
 # Object files for target arrays
 arrays_OBJECTS = \
-"CMakeFiles/arrays.dir/main.c.o" \
+"CMakeFiles/arrays.dir/src/main.c.o" \
 "CMakeFiles/arrays.dir/src/array.c.o" \
 "CMakeFiles/arrays.dir/src/extvars.c.o"
 
 # External object files for target arrays
 arrays_EXTERNAL_OBJECTS =
 
-arrays: CMakeFiles/arrays.dir/main.c.o
+arrays: CMakeFiles/arrays.dir/src/main.c.o
 arrays: CMakeFiles/arrays.dir/src/array.c.o
 arrays: CMakeFiles/arrays.dir/src/extvars.c.o
 arrays: CMakeFiles/arrays.dir/build.make

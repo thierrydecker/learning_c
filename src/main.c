@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "src/extvars.h"
+#include "extvars.h"
 
 /*
  * Main function
