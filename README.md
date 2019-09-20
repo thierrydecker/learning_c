@@ -11,6 +11,7 @@
 - [Variables](docs/VARIABLES.md)
 - [Constants/Literals](docs/LITERALS.md)
 - [Storage classes](docs/STORAGECLASSES.md)
+- [Operators](docs/OPERATORS.md)
 
 ## Annexes
 - [Arrays](docs/ARRAYS.md)
