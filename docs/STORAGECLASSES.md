@@ -182,3 +182,7 @@ _**Third File: extvars.c**_
 // counter definition
 int counter = 10;
 ```
+
+A detailed article about caveats of a wrong usage of `extern` keyword...
+
+[Wrong and right usage of extern keyword](https://sogilis.com/blog/wrong-usage-of-extern-keyword-in-c/)
