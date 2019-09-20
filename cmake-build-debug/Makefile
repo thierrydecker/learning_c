@@ -177,6 +177,33 @@ src/array.c.s:
 	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.s
 .PHONY : src/array.c.s
 
+src/extvars.o: src/extvars.c.o
+
+.PHONY : src/extvars.o
+
+# target to build an object file
+src/extvars.c.o:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.o
+.PHONY : src/extvars.c.o
+
+src/extvars.i: src/extvars.c.i
+
+.PHONY : src/extvars.i
+
+# target to preprocess a source file
+src/extvars.c.i:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.i
+.PHONY : src/extvars.c.i
+
+src/extvars.s: src/extvars.c.s
+
+.PHONY : src/extvars.s
+
+# target to generate assembly for a file
+src/extvars.c.s:
+	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.s
+.PHONY : src/extvars.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... src/array.o"
 	@echo "... src/array.i"
 	@echo "... src/array.s"
+	@echo "... src/extvars.o"
+	@echo "... src/extvars.i"
+	@echo "... src/extvars.s"
 .PHONY : help
 
 

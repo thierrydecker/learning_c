@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/arrays.dir/main.c.o"
   "CMakeFiles/arrays.dir/src/array.c.o"
+  "CMakeFiles/arrays.dir/src/extvars.c.o"
   "arrays.pdb"
   "arrays"
 )

@@ -87,6 +87,12 @@
 		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/src/array.h">
 			<Option target="arrays"/>
 		</Unit>
+		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/src/extvars.c">
+			<Option target="arrays"/>
+		</Unit>
+		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/src/extvars.h">
+			<Option target="arrays"/>
+		</Unit>
 		<Unit filename="/home/tdecker/Documents/workspaces/c/learning-c/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
