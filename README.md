@@ -12,6 +12,7 @@
 - [Constants/Literals](docs/LITERALS.md)
 - [Storage classes](docs/STORAGECLASSES.md)
 - [Operators](docs/OPERATORS.md)
+- [Decision making](docs/DECISIONMAKING.md)
 
 ## Annexes
 - [Arrays](docs/ARRAYS.md)
