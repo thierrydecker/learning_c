@@ -16,6 +16,7 @@
 
 ## Annexes
 - [printf format identifiers](docs/PRINTFFORMAT.md)
+- [Anatomy of format string](docs/PRINTFANATOMY.md)
 - [Arrays](docs/ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)
 - [Pointers](docs/POINTERS.md)
