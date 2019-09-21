@@ -148,7 +148,7 @@ _**q**_
 
 ("quad". 4.4BSD and Linux libc5 only. Don't use.) This is a synonym for ll.
 
-_*j**_
+_**j**_
 
 A following integer conversion corresponds to an intmax_t or uintmax_t argument.
 

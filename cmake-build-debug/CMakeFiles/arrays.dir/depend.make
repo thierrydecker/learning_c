@@ -7,6 +7,5 @@ CMakeFiles/arrays.dir/src/array.c.o: ../src/array.h
 CMakeFiles/arrays.dir/src/extvars.c.o: ../src/extvars.c
 CMakeFiles/arrays.dir/src/extvars.c.o: ../src/extvars.h
 
-CMakeFiles/arrays.dir/src/main.c.o: ../src/extvars.h
 CMakeFiles/arrays.dir/src/main.c.o: ../src/main.c
 
