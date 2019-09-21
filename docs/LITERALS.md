@@ -90,11 +90,11 @@ Following is the example to show a few escape sequence characters:
 ```
 #include <stdio.h>
 
-int main() 
+int main()
 {
-  printf("Hello\tWorld\n\n");
+        printf("Hello\tWorld\n\n");
 
-  return 0;
+        return 0;
 }
 ```
 
@@ -142,19 +142,19 @@ The following example explains it in detail:
 ```
 #include <stdio.h>
 
-#define LENGTH 10   
+#define LENGTH 10
 #define WIDTH  5
 #define NEWLINE '\n'
 
 int main()
- {
-  int area;  
-  
-  area = LENGTH * WIDTH;
-  printf("value of area : %d", area);
-  printf("%c", NEWLINE);
+{
+        int area;
 
-  return 0;
+        area = LENGTH * WIDTH;
+        printf("value of area : %d", area);
+        printf("%c", NEWLINE);
+
+        return 0;
 }
 ```
 
@@ -175,18 +175,18 @@ The following example explains it in detail:
 ```
 #include <stdio.h>
 
-int main() 
+int main()
 {
-  const int  LENGTH = 10;
-  const int  WIDTH = 5;
-  const char NEWLINE = '\n';
-  int area;  
-   
-  area = LENGTH * WIDTH;
-  printf("value of area : %d", area);
-  printf("%c", NEWLINE);
+        const int  LENGTH = 10;
+        const int  WIDTH = 5;
+        const char NEWLINE = '\n';
+        int area;
 
-  return 0;
+        area = LENGTH * WIDTH;
+        printf("value of area : %d", area);
+        printf("%c", NEWLINE);
+
+        return 0;
 }
 ```
 

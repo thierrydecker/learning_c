@@ -16,8 +16,8 @@ The auto storage class is the default storage class for all local variables.
 
 ```
 {
-  int mount;
-  auto int month;
+int mount;
+auto int month;
 }
 ```
 
@@ -32,7 +32,7 @@ This means that the variable has a maximum size equal to the register size (usua
 
 ```
 {
-  register int  miles;
+register int  miles;
 }
 ```
 
@@ -55,30 +55,30 @@ the objects of its class.
 
 ```
 #include <stdio.h>
- 
+
 /* function declaration */
 void func(void);
- 
+
 static int count = 5; /* global variable */
- 
-main() 
+
+main()
 {
 
-  while(count--) 
-  {
-    func();
-  }
+        while(count--)
+        {
+                func();
+        }
 
-   return 0;
+        return 0;
 }
 
 /* function definition */
 void func( void ) {
 
-  static int i = 5; /* local static variable */
-  i++;
+        static int i = 5; /* local static variable */
+        i++;
 
-  printf("i is %d and count is %d\n", i, count);
+        printf("i is %d and count is %d\n", i, count);
 }
 ```
 
@@ -109,14 +109,14 @@ _**First File: main.c**_
 
 ```
 #include <stdio.h>
- 
+
 int count ;
 extern void write_extern();
- 
-main() 
+
+main()
 {
-  count = 5;
-  write_extern();
+        count = 5;
+        write_extern();
 }
 ```
 
@@ -124,12 +124,12 @@ _**Second File: support.c**_
 
 ```
 #include <stdio.h>
- 
+
 extern int count;
- 
-void write_extern(void) 
+
+void write_extern(void)
 {
-  printf("count is %d\n", count);
+        printf("count is %d\n", count);
 }
 ```
 
@@ -159,8 +159,8 @@ _**First File: main.c**_
  * */
 int main (int argv, char *args[])
 {
-  printf("counter: %d", counter);
-  return EXIT_SUCCESS;
+        printf("counter: %d", counter);
+        return EXIT_SUCCESS;
 }
 ```
 

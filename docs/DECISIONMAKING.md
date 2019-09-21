@@ -22,10 +22,10 @@ An if statement consists of a boolean expression followed by one or more stateme
 The syntax of an 'if' statement in C programming language is:
 
 ```
-if(boolean_expression) 
-  {
-    /* statement(s) will execute if the boolean expression is true */
-  }
+if(boolean_expression)
+{
+/* statement(s) will execute if the boolean expression is true */
+}
 ```
 
 If the Boolean expression evaluates to true, then the block of code inside the 'if' statement will be executed. If the 
@@ -43,24 +43,24 @@ assumed as false value.
 
 ```
 #include <stdio.h>
- 
-int main () 
+
+int main ()
 {
 
-  /* local variable definition */
-  int a = 10;
- 
-  /* check the boolean condition using if statement */
+        /* local variable definition */
+        int a = 10;
 
-  if( a < 20 ) 
-  {
-    /* if condition is true then print the following */
-    printf("a is less than 20\n" );
-  }
-   
-  printf("value of a is : %d\n", a);
- 
-   return 0;
+        /* check the boolean condition using if statement */
+
+        if( a < 20 )
+        {
+                /* if condition is true then print the following */
+                printf("a is less than 20\n" );
+        }
+
+        printf("value of a is : %d\n", a);
+
+        return 0;
 }
 ```
 
@@ -80,14 +80,14 @@ An if statement can be followed by an optional else statement, which executes wh
 The syntax of an if...else statement in C programming language is:
 
 ```
-if(boolean_expression) 
-  {
-    /* statement(s) will execute if the boolean expression is true */
-  } 
-else 
-  {
-    /* statement(s) will execute if the boolean expression is false */
-  }
+if(boolean_expression)
+{
+/* statement(s) will execute if the boolean expression is true */
+}
+else
+{
+/* statement(s) will execute if the boolean expression is false */
+}
 ```
 If the Boolean expression evaluates to true, then the if block will be executed, otherwise, the else block will be 
 executed.
@@ -103,28 +103,28 @@ assumed as false value.
 
 ```
 #include <stdio.h>
- 
-int main () 
+
+int main ()
 {
 
-  /* local variable definition */
-  int a = 100;
- 
-  /* check the boolean condition */
-  if( a < 20 ) 
-    {
-      /* if condition is true then print the following */
-      printf("a is less than 20\n" );
-    } 
-  else
-    {
-      /* if condition is false then print the following */
-      printf("a is not less than 20\n" );
-    }
-   
-  printf("value of a is : %d\n", a);
- 
-  return 0;
+        /* local variable definition */
+        int a = 100;
+
+        /* check the boolean condition */
+        if( a < 20 )
+        {
+                /* if condition is true then print the following */
+                printf("a is less than 20\n" );
+        }
+        else
+        {
+                /* if condition is false then print the following */
+                printf("a is not less than 20\n" );
+        }
+
+        printf("value of a is : %d\n", a);
+
+        return 0;
 }
 ```
 
@@ -151,60 +151,60 @@ When using `if...else if...else` statements, there are few points to keep in min
 The syntax of an `if...else if...else` statement in C programming language is:
 
 ```
-if(boolean_expression 1) 
-  {
-    /* Executes when the boolean expression 1 is true */
-  }
-else if( boolean_expression 2) 
-  {
-    /* Executes when the boolean expression 2 is true */
-  } 
-else if( boolean_expression 3) 
-  {
-    /* Executes when the boolean expression 3 is true */
-  }
-else 
-  {
-    /* executes when the none of the above condition is true */
-  }
+if(boolean_expression 1)
+{
+/* Executes when the boolean expression 1 is true */
+}
+else if( boolean_expression 2)
+{
+/* Executes when the boolean expression 2 is true */
+}
+else if( boolean_expression 3)
+{
+/* Executes when the boolean expression 3 is true */
+}
+else
+{
+/* executes when the none of the above condition is true */
+}
 ```
 
 ### Example
 
 ```
 #include <stdio.h>
- 
-int main () 
+
+int main ()
 {
 
-  /* local variable definition */
-  int a = 100;
- 
-  /* check the boolean condition */
-  if( a == 10 ) 
-    {
-      /* if condition is true then print the following */
-      printf("Value of a is 10\n" );
-    } 
-  else if( a == 20 ) 
-   {
-      /* if else if condition is true */
-      printf("Value of a is 20\n" );
-    } 
-  else if( a == 30 ) 
-    {
-      /* if else if condition is true  */
-      printf("Value of a is 30\n" );
-   } 
-  else 
-    {
-      /* if none of the conditions is true */
-      printf("None of the values is matching\n" );
-    }
-   
-   printf("Exact value of a is: %d\n", a );
- 
-   return 0;
+        /* local variable definition */
+        int a = 100;
+
+        /* check the boolean condition */
+        if( a == 10 )
+        {
+                /* if condition is true then print the following */
+                printf("Value of a is 10\n" );
+        }
+        else if( a == 20 )
+        {
+                /* if else if condition is true */
+                printf("Value of a is 20\n" );
+        }
+        else if( a == 30 )
+        {
+                /* if else if condition is true  */
+                printf("Value of a is 30\n" );
+        }
+        else
+        {
+                /* if none of the conditions is true */
+                printf("None of the values is matching\n" );
+        }
+
+        printf("Exact value of a is: %d\n", a );
+
+        return 0;
 }
 ```
 
@@ -241,29 +241,29 @@ You can nest else if...else in the similar way as you have nested if statements.
 
 ```
 #include <stdio.h>
- 
-int main () 
+
+int main ()
 {
 
-  /* local variable definition */
-  int a = 100;
-  int b = 200;
+        /* local variable definition */
+        int a = 100;
+        int b = 200;
 
-  /* check the boolean condition */
-  if( a == 100 ) 
-    {
-      /* if condition is true then check the following */
-      if( b == 200 ) 
+        /* check the boolean condition */
+        if( a == 100 )
         {
-          /* if condition is true then print the following */
-          printf("Value of a is 100 and b is 200\n" );
+                /* if condition is true then check the following */
+                if( b == 200 )
+                {
+                        /* if condition is true then print the following */
+                        printf("Value of a is 100 and b is 200\n" );
+                }
         }
-       }
-   
-  printf("Exact value of a is : %d\n", a );
-  printf("Exact value of b is : %d\n", b );
- 
-  return 0;
+
+        printf("Exact value of a is : %d\n", a );
+        printf("Exact value of b is : %d\n", b );
+
+        return 0;
 }
 ```
 
@@ -331,34 +331,34 @@ can be used for performing a task when none of the cases is true. No break is ne
 
 ```
 #include <stdio.h>
- 
+
 int main () {
 
-  /* local variable definition */
-  char grade = 'B';
+        /* local variable definition */
+        char grade = 'B';
 
-  switch (grade)
-    {
-  case 'A' :
-    printf ("Excellent!\n");
-      break;
-  case 'B' :
-  case 'C' :
-    printf ("Well done\n");
-      break;
-  case 'D' :
-    printf ("You passed\n");
-      break;
-  case 'F' :
-    printf ("Better try again\n");
-      break;
-  default :
-    printf ("Invalid grade\n");
-    }
+        switch (grade)
+        {
+        case 'A' :
+                printf ("Excellent!\n");
+                break;
+        case 'B' :
+        case 'C' :
+                printf ("Well done\n");
+                break;
+        case 'D' :
+                printf ("You passed\n");
+                break;
+        case 'F' :
+                printf ("Better try again\n");
+                break;
+        default :
+                printf ("Invalid grade\n");
+        }
 
-  printf ("Your grade is  %c\n", grade);
+        printf ("Your grade is  %c\n", grade);
 
-  return 0;
+        return 0;
 }
 ```
 

@@ -18,11 +18,12 @@ Let us look at a simple code that would print the words "Hello World"
 ```
 #include <stdio.h>
 
-int main() {
-   /* my first program in C */
-   printf("Hello, World! \n");
-   
-   return 0;
+int main ()
+{
+        /* my first program in C */
+        printf ("Hello, World! \n");
+
+        return 0;
 }
 ```
 

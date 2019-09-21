@@ -102,25 +102,25 @@ extern int a, b;
 extern int c;
 extern float f;
 
-int main () 
+int main ()
 {
 
-  /* variable definition: */
-  int a, b;
-  int c;
-  float f;
- 
-  /* actual initialization */
-  a = 10;
-  b = 20;
-  
-  c = a + b;
-  printf("value of c : %d \n", c);
+        /* variable definition: */
+        int a, b;
+        int c;
+        float f;
 
-  f = 70.0/3.0;
-  printf("value of f : %f \n", f);
- 
-  return 0;
+        /* actual initialization */
+        a = 10;
+        b = 20;
+
+        c = a + b;
+        printf("value of c : %d \n", c);
+
+        f = 70.0/3.0;
+        printf("value of f : %f \n", f);
+
+        return 0;
 }
 ```
 
@@ -138,16 +138,16 @@ its actual definition can be given anywhere else. For example:
 // function declaration
 int func();
 
-int main() 
+int main()
 {
-  // function call
-  int i = func();
+        // function call
+        int i = func();
 }
 
 // function definition
-int func() 
+int func()
 {
-  return 0;
+        return 0;
 }
 ```
 
