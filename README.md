@@ -15,6 +15,7 @@
 - [Decision making](docs/DECISIONMAKING.md)
 
 ## Annexes
+- [printf format identifiers](docs/PRINTFFORMAT.md)
 - [Arrays](docs/ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)
 - [Pointers](docs/POINTERS.md)
