@@ -24,7 +24,7 @@ The syntax of an 'if' statement in C programming language is:
 ```
 if(boolean_expression)
 {
-/* statement(s) will execute if the boolean expression is true */
+        /* statement(s) will execute if the boolean expression is true */
 }
 ```
 
@@ -82,11 +82,11 @@ The syntax of an if...else statement in C programming language is:
 ```
 if(boolean_expression)
 {
-/* statement(s) will execute if the boolean expression is true */
+        /* statement(s) will execute if the boolean expression is true */
 }
 else
 {
-/* statement(s) will execute if the boolean expression is false */
+        /* statement(s) will execute if the boolean expression is false */
 }
 ```
 If the Boolean expression evaluates to true, then the if block will be executed, otherwise, the else block will be 
@@ -153,19 +153,19 @@ The syntax of an `if...else if...else` statement in C programming language is:
 ```
 if(boolean_expression 1)
 {
-/* Executes when the boolean expression 1 is true */
+        /* Executes when the boolean expression 1 is true */
 }
 else if( boolean_expression 2)
 {
-/* Executes when the boolean expression 2 is true */
+        /* Executes when the boolean expression 2 is true */
 }
 else if( boolean_expression 3)
 {
-/* Executes when the boolean expression 3 is true */
+        /* Executes when the boolean expression 3 is true */
 }
 else
 {
-/* executes when the none of the above condition is true */
+        /* executes when the none of the above condition is true */
 }
 ```
 
@@ -226,13 +226,13 @@ inside another if or else if statement(s).
 
 ```
 if ( boolean_expression 1) 
-  {
-    /* Executes when the boolean expression 1 is true */
-    if(boolean_expression 2) 
-      {
-        /* Executes when the boolean expression 2 is true */
-      }
-  }
+{
+        /* Executes when the boolean expression 1 is true */
+        if(boolean_expression 2) 
+        {
+                /* Executes when the boolean expression 2 is true */
+        }
+}
 ```
 
 You can nest else if...else in the similar way as you have nested if statements.
@@ -287,16 +287,16 @@ The syntax for a switch statement in C programming language is as follows:
 
 ```
 switch(expression) 
-  {
-case constant-expression  :
-  statement(s);
-  break; /* optional */
-case constant-expression  :
-  statement(s);
-  break; /* optional */
-/* you can have any number of case statements */
-default : /* Optional */
-  statement(s);
+{
+        case constant-expression  :
+                statement(s);
+                break; /* optional */
+        case constant-expression  :
+                statement(s);
+                break; /* optional */
+        /* you can have any number of case statements */
+        default : /* Optional */
+                statement(s);
 }
 ```
 
