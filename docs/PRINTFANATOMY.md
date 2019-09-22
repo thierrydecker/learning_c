@@ -58,7 +58,7 @@ actual format.
 
 The format for what appears about a % sign is:
 
-    %[flag][min width][precision][length modifier][conversion specifier]
+**_% [flag] [min width] [precision] [length modifier] [conversion specifier]_**
 
 Most of these fields are optional, other than providing a conversion specifier, which you've already seen (for example, 
 using %d to print out a decimal number).
