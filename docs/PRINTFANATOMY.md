@@ -222,3 +222,108 @@ displays only
     "abcde"
 
 This is useful if you need to make sure that your output does not go beyond a fixed number of characters.
+
+## Width
+
+The width field is almost the opposite of the precision field. Precision controls the max number of characters to print,
+width controls the minimum number, and has the same format as precision, except without a decimal point:
+
+    printf( "%5s\n", "abc" );
+
+prints:
+
+    abc
+
+The blank spaces go at the beginning, by default.
+
+You can combine the precision and width, if you like: <width>.<precision>
+
+    printf( "%8.5f\n", 1.234 );
+
+prints:
+
+    1.23400
+
+(Note the leading space.)
+
+## Flag
+
+Flag
+
+The flag setting controls 'characters' that are added to a string, such whether to append 0x to a hexadecimal number, or whether to pad numbers with 0s.
+
+The specific flag options are:
+
+### The Pound Sign: \#
+
+Adding a # will cause a '0' to be prepended to an octal number (when using the o conversion specifier), or a 0x to be 
+prepended to a hexadecimal number (when using a x conversion specifier). For most other conversion specifiers, adding 
+a # will simply force the inclusion of a decimal point, even if the number has no fractional part.
+
+    printf( "%#x", 12 );
+
+results in:
+
+    0xc
+
+being printed. Whereas:
+
+    printf( "%x", 12 );
+
+results in simply:
+
+    c
+
+being printed.
+
+### The Zero Flag: 0
+
+Using 0 will force the number to be padded with 0s. This only really matters if you use the width setting to ask for a 
+minimal width for your number. For example, if you write:
+
+    printf( "%05d\n", 10 );
+
+You would get:
+
+    00010
+
+### The Plus Sign Flag: +
+
+The plus sign will include the sign specifier for the number:
+
+    printf( "%+d\n", 10 );
+
+Will print:
+
+    +10
+
+### The Minus Sign Flag: -
+
+Finally, the minus sign will cause the output to be left-justified. This is important if you are using the width 
+specifier and you want the padding to appear at the end of the output instead of the beginning:
+
+    printf( "|%-5d|%-5d|\n", 1, 2 );
+
+displays:
+
+    |1    |2    |
+
+With the padding at the end of the output.
+
+### Combining it all together
+
+For any given format specifier, you can provide must always provide the percent sign and the base specifier. You can 
+then include any, or all, of the flags, width and precision and length that you want. You can even include multiple 
+flags togeher. Here's a particularly complex example demonstrating multiple flags that would be useful for printing 
+memory addresses as hexadecimal values.
+
+    printf( "%#010x\n", 12 );
+
+The easiest way to read this is to first notice the % sign and then read right-to-left--the x indicates that we are 
+printing a hexadecimal value; the 10 indicates we want 10 total characters width; the next 0 is a flag indicating we 
+want to pad with 0s intead of spaces, and finally the # sign indicates we want a leading 0x. Since we start with 0x, 
+this means we'll have 8 digits--exactly the right amount for printing out a 32 bit memory address.
+
+The final result is:
+
+    0x0000000c
