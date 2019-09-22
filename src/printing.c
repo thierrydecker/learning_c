@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void printme (void)
+void print_me (void)
 {
         /*
          * Print string

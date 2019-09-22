@@ -252,7 +252,8 @@ prints:
 
 Flag
 
-The flag setting controls 'characters' that are added to a string, such whether to append 0x to a hexadecimal number, or whether to pad numbers with 0s.
+The flag setting controls 'characters' that are added to a string, such whether to append 0x to a hexadecimal number, 
+or whether to pad numbers with 0s.
 
 The specific flag options are:
 
