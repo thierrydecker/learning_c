@@ -329,3 +329,90 @@ this means we'll have 8 digits--exactly the right amount for printing out a 32 b
 The final result is:
 
     0x0000000c
+    
+## Some examples:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        /*
+         * Print string
+         * */
+        printf("\nStrings format\n");
+        char s[] = "Thierry DECKER";
+        printf ("(%%s) -> Value of s is : %s\n", s);
+
+        /*
+         * Print numbers
+         * */
+        printf("\nNumbers format\n");
+
+        /*
+         * Print integers
+         * */
+        printf("\nIntegers format\n");
+        int a = -102;
+        unsigned int b = 1254;
+        printf ("(%%d) -> Value of a is : %d\n", a);
+        printf ("(%%i) -> Value of a is : %i\n", a);
+        printf ("(%%u) -> Value of a is : %i\n", b);
+
+        /*
+         * Print floats
+         * */
+        printf("\nFloats format\n");
+        float f = 102.125;
+        printf ("(%%f) -> Value of f is : %f\n", f);
+        printf ("(%%e) -> Value of f is : %e\n", f);
+        printf ("(%%E) -> Value of f is : %E\n", f);
+        printf ("(%%g) -> Value of f is : %g\n", f);
+        printf ("(%%G) -> Value of f is : %G\n", f);
+
+        /*
+         * Length modifier
+         * */
+        long double g = 3.1415926535;
+        printf ("(%%Lg) -> Value of g is: %Lg\n", g);
+
+        /*
+         * Precision modifier
+         * */
+        printf ("(%%.3f) -> Value of f is : %.1f\n", f);
+        printf ("(%%.5d) -> Value of a is : %.5d\n", a);
+        printf ("(%%.5s) -> Value of s is : %.5s\n", s);
+
+        return EXIT_SUCCESS;
+
+}
+```
+
+Will print out:
+
+```
+Strings format
+(%s) -> Value of s is : Thierry DECKER
+
+Numbers format
+
+Integers format
+(%d) -> Value of a is : -102
+(%i) -> Value of a is : -102
+(%u) -> Value of a is : 1254
+
+Floats format
+(%f) -> Value of f is : 102.125000
+(%e) -> Value of f is : 1.021250e+02
+(%E) -> Value of f is : 1.021250E+02
+(%g) -> Value of f is : 102.125
+(%G) -> Value of f is : 102.125
+(%Lg) -> Value of g is: 3.14159
+(%.3f) -> Value of f is : 102.1
+(%.5d) -> Value of a is : -00102
+(%.5s) -> Value of s is : Thier
+```
