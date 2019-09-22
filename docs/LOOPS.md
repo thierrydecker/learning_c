@@ -290,7 +290,68 @@ When the above code is compiled and executed, it produces the following result:
 
 ## Loop control statements
 
+Loop control statements change execution from its normal sequence. When execution leaves a scope, all automatic 
+objects that were created in that scope are destroyed.
+
 ### break statement
+
+The break statement in C programming has the following two usages:
+
+- When a break statement is encountered inside a loop, the loop is immediately terminated and the program control 
+resumes at the next statement following the loop.
+
+- It can be used to terminate a case in the switch statement (covered in the next chapter).
+
+If you are using nested loops, the break statement will stop the execution of the innermost loop and start executing 
+the next line of code after the block.
+
+#### Syntax
+
+The syntax for a break statement in C is as follows:
+
+    break;
+
+#### Flow diagram
+
+![break statement](images/cpp_break_statement.jpg)
+
+#### Example
+
+```
+#include <stdio.h>
+
+int main ()
+{
+
+        /* local variable definition */
+        int a = 10;
+
+        /* while loop execution */
+        while (a < 20) {
+
+                printf ("value of a: %d\n", a);
+                a++;
+
+                if (a > 15) {
+                        /* terminate the loop using break statement */
+                        break;
+                }
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result:
+
+```
+value of a: 10
+value of a: 11
+value of a: 12
+value of a: 13
+value of a: 14
+value of a: 15
+```
 
 ### continue statement
 
