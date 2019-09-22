@@ -204,6 +204,33 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/printing.o: src/printing.c.o
+
+.PHONY : src/printing.o
+
+# target to build an object file
+src/printing.c.o:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/printing.c.o
+.PHONY : src/printing.c.o
+
+src/printing.i: src/printing.c.i
+
+.PHONY : src/printing.i
+
+# target to preprocess a source file
+src/printing.c.i:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/printing.c.i
+.PHONY : src/printing.c.i
+
+src/printing.s: src/printing.c.s
+
+.PHONY : src/printing.s
+
+# target to generate assembly for a file
+src/printing.c.s:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/printing.c.s
+.PHONY : src/printing.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -222,6 +249,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/printing.o"
+	@echo "... src/printing.i"
+	@echo "... src/printing.s"
 .PHONY : help
 
 
