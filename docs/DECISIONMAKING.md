@@ -368,3 +368,60 @@ When the above code is compiled and executed, it produces the following result:
 Well done
 Your grade is B
 ```
+
+## Nested switch statements
+
+It is possible to have a switch as a part of the statement sequence of an outer switch. Even if the case constants of 
+the inner and outer switch contain common values, no conflicts will arise.
+
+### Syntax
+
+The syntax for a nested switch statement is as follows −
+
+```
+switch(ch1) {
+
+   case 'A': 
+      printf("This A is part of outer switch" );
+		
+      switch(ch2) {
+         case 'A':
+            printf("This A is part of inner switch" );
+            break;
+         case 'B': /* case code */
+      }
+	  
+      break;
+   case 'B': /* case code */
+}
+```
+
+### Example
+
+```
+#include <stdio.h>
+
+int main ()
+{
+
+        /* local variable definition */
+        int a = 100;
+        int b = 200;
+
+        switch (a) {
+
+        case 100:
+                printf ("This is part of outer switch\n", a);
+
+                switch (b) {
+                case 200:
+                        printf ("This is part of inner switch\n", a);
+                }
+        }
+
+        printf ("Exact value of a is : %d\n", a);
+        printf ("Exact value of b is : %d\n", b);
+
+        return 0;
+}
+```
