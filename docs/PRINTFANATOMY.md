@@ -167,3 +167,58 @@ tell printf to look for multibyte characters by adding the l: `%ls`.
 
 (If you happen to be using wprintf, on the other hand, you can simply use %s and it will natively treat all strings as 
 wide character strings.)
+
+##Precision
+
+The "precision" modifier is written ".number", and has slightly different meanings for the different conversion 
+specifiers (like d or g).
+
+For floating point numbers (e.g. %f), it controls the number of digits printed after the decimal point:
+
+    printf( "%.3f", 1.2 );
+
+will print:
+
+    1.200
+
+If the number provided has more precision than is given, it will round. For example:
+
+    printf( "%.3f", 1.2348 );
+
+will display as:
+
+    1.235
+
+Interestingly, for g and G, it will control the number of significant figures displayed. This will impact not just the 
+value after the decimal place but the whole number.
+
+    printf( "%.3f\n%.3g\n%.3f\n%.3g\n", 100.2, 100.2, 3.1415926, 3.1415926 );
+
+    100.200 // %.3f, putting 3 decimal places always
+    100     // %.3g, putting 3 significant figures
+    3.142   // %.3f, putting 3 decimal places again
+    3.14    // %.3g, putting 3 significant figures
+
+For integers, on the other hand, the precision it controls the minimum number of digits printed:
+
+    printf( "%.3d", 10 );
+
+Will print the number 10 with three digits:
+
+    010
+
+There's one special case for integers--if you specify '.0', then the number zero will have no output:
+
+    printf( "%.0d", 0 );
+
+has no output!
+
+Finally, for strings, the precision controls the maximum length of the string displayed:
+
+    printf( "%.5s\n", "abcdefg" );
+
+displays only
+
+    "abcde"
+
+This is useful if you need to make sure that your output does not go beyond a fixed number of characters.
