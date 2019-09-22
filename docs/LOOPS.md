@@ -162,16 +162,17 @@ This process repeats until the given condition becomes false.
 ```
 #include <stdio.h>
 
-int main () {
+int main ()
+{
 
         /* local variable definition */
         int a = 10;
 
         /* do loop execution */
         do {
-                printf("value of a: %d\n", a);
+                printf ("value of a: %d\n", a);
                 a = a + 1;
-        }while( a < 20 );
+        } while (a < 20);
 
         return 0;
 }
@@ -193,6 +194,99 @@ value of a: 19
 ```
 
 ## Nested loop
+
+C programming allows to use one loop inside another loop. The following section shows a few examples to illustrate the 
+concept.
+
+### Syntax
+
+The syntax for a nested for loop statement in C is as follows:
+
+    for ( init; condition; increment ) {
+
+        for ( init; condition; increment ) {
+            statement(s);
+    }
+    statement(s);
+    }
+
+The syntax for a nested while loop statement in C programming language is as follows:
+
+    while(condition) {
+
+        while(condition) {
+            statement(s);
+        }
+        statement(s);
+    }
+
+The syntax for a nested do...while loop statement in C programming language is as follows −
+
+    do {
+    
+        statement(s);
+
+        do {
+            statement(s);
+        }while( condition );
+        
+    }while( condition );
+
+A final note on loop nesting is that you can put any type of loop inside any other type of loop. For example, a 'for' 
+loop can be inside a 'while' loop or vice versa.
+Example
+
+The following program uses a nested for loop to find the prime numbers from 2 to 100:
+
+```
+#include <stdio.h>
+
+int main ()
+{
+
+        /* local variable definition */
+        int i, j;
+
+        for (i = 2; i < 100; i++) {
+
+                for (j = 2; j <= (i / j); j++)
+                        if (!(i % j)) break; // if factor found, not prime
+                if (j > (i / j)) printf ("%d is prime\n", i);
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result:
+
+```
+2 is prime
+3 is prime
+5 is prime
+7 is prime
+11 is prime
+13 is prime
+17 is prime
+19 is prime
+23 is prime
+29 is prime
+31 is prime
+37 is prime
+41 is prime
+43 is prime
+47 is prime
+53 is prime
+59 is prime
+61 is prime
+67 is prime
+71 is prime
+73 is prime
+79 is prime
+83 is prime
+89 is prime
+97 is prime
+```
 
 ## Loop control statements
 
