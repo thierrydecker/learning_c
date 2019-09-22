@@ -123,3 +123,47 @@ to simply print out a percent sign.
 
 Now, let's walk through each of the different components of a format specifier.
 
+## Length Modifier
+
+The length modifier is perhaps oddly-named; it does not modify the length of the output. Instead, it's what you use to 
+specify the length of the input. Huh? Say you have:
+
+    long double d = 3.1415926535;
+    printf( "%g", d );
+
+Here, d is the input to printf; and what you're saying is that you want to print d as an double; but d is not a double, 
+it is a long double. A long double is likely to be 16 bytes (compared to 8 for a double), so the difference matters. 
+
+Try running that small snippet and you'll find that you get garbage output that looks something like this:
+
+    4.94066e-324
+
+Remember, the bytes that are given to printf are being treated like a double--but they aren't a double, they're a long 
+double. 
+
+The length is wrong, and the results are ugly!
+
+The length modifier is all about helping printf deal with cases where you're using unusually big (or unusually small) 
+variables.
+
+The best way to think about length modifiers is to say: what variable type do I have, and do I need to use a length 
+modifier for it? Here's a table that should help you out:
+
+|Variable type|Length Modifier|Example|
+|:-----------:|:-------------:|:-----:|
+|short int, unsigned short int|h|short int i = 3; printf( "%hd", i );|
+|long int or unsigned long int|l|long int i = 3; printf( "%ld", i );|
+|wide characters or strings|l|wchar_t* wide_str = L"Wide String"; printf( "%ls", wide_str );|
+|long double|L|long double d = 3.1415926535; printf( "%Lg", d );|
+
+I'd like to make special mention about the wide character handling. If you write
+
+wchar_t* wide_str = L"Wide String";
+printf( "%s", wide_str );
+
+without the l, the result will be to print a single W to the screen. The reason is that wide characters are two bytes, 
+and for simple ASCII characters like W, the second byte is 0. Therefore, printf thinks the string is done! You must 
+tell printf to look for multibyte characters by adding the l: `%ls`.
+
+(If you happen to be using wprintf, on the other hand, you can simply use %s and it will natively treat all strings as 
+wide character strings.)

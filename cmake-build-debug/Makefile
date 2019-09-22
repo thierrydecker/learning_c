@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named arrays
+# Target rules for targets named learning_c
 
 # Build rule for target.
-arrays: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 arrays
-.PHONY : arrays
+learning_c: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 learning_c
+.PHONY : learning_c
 
 # fast build rule for target.
-arrays/fast:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/build
-.PHONY : arrays/fast
+learning_c/fast:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/build
+.PHONY : learning_c/fast
 
 src/array.o: src/array.c.o
 
@@ -129,7 +129,7 @@ src/array.o: src/array.c.o
 
 # target to build an object file
 src/array.c.o:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.o
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/array.c.o
 .PHONY : src/array.c.o
 
 src/array.i: src/array.c.i
@@ -138,7 +138,7 @@ src/array.i: src/array.c.i
 
 # target to preprocess a source file
 src/array.c.i:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.i
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/array.c.i
 .PHONY : src/array.c.i
 
 src/array.s: src/array.c.s
@@ -147,7 +147,7 @@ src/array.s: src/array.c.s
 
 # target to generate assembly for a file
 src/array.c.s:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/array.c.s
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/array.c.s
 .PHONY : src/array.c.s
 
 src/extvars.o: src/extvars.c.o
@@ -156,7 +156,7 @@ src/extvars.o: src/extvars.c.o
 
 # target to build an object file
 src/extvars.c.o:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.o
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/extvars.c.o
 .PHONY : src/extvars.c.o
 
 src/extvars.i: src/extvars.c.i
@@ -165,7 +165,7 @@ src/extvars.i: src/extvars.c.i
 
 # target to preprocess a source file
 src/extvars.c.i:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.i
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/extvars.c.i
 .PHONY : src/extvars.c.i
 
 src/extvars.s: src/extvars.c.s
@@ -174,7 +174,7 @@ src/extvars.s: src/extvars.c.s
 
 # target to generate assembly for a file
 src/extvars.c.s:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/extvars.c.s
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/extvars.c.s
 .PHONY : src/extvars.c.s
 
 src/main.o: src/main.c.o
@@ -183,7 +183,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -192,7 +192,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -201,7 +201,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/arrays.dir/build.make CMakeFiles/arrays.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 # Help Target
@@ -211,7 +211,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... arrays"
+	@echo "... learning_c"
 	@echo "... edit_cache"
 	@echo "... src/array.o"
 	@echo "... src/array.i"

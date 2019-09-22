@@ -44,5 +44,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/arrays.dir/DependInfo.cmake"
+  "CMakeFiles/learning_c.dir/DependInfo.cmake"
   )

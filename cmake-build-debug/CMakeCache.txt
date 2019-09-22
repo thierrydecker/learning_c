@@ -124,7 +124,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=arrays
+CMAKE_PROJECT_NAME:STATIC=learning_c
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -196,6 +196,12 @@ arrays_BINARY_DIR:STATIC=/home/tdecker/Documents/workspaces/c/learning-c/cmake-b
 
 //Value Computed by CMake
 arrays_SOURCE_DIR:STATIC=/home/tdecker/Documents/workspaces/c/learning-c
+
+//Value Computed by CMake
+learning_c_BINARY_DIR:STATIC=/home/tdecker/Documents/workspaces/c/learning-c/cmake-build-debug
+
+//Value Computed by CMake
+learning_c_SOURCE_DIR:STATIC=/home/tdecker/Documents/workspaces/c/learning-c
 
 
 ########################
