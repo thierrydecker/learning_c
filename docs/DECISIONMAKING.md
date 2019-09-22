@@ -434,3 +434,18 @@ This is part of inner switch
 Exact value of a is : 100
 Exact value of b is : 200
 ```
+
+## The ? : Operator
+
+We have covered conditional operator ? : in the previous chapter which can be used to replace if...else statements. It 
+has the following general form:
+
+    Exp1 ? Exp2 : Exp3;
+
+Where Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the colon.
+
+The value of a ? expression is determined like this:
+
+- Exp1 is evaluated. If it is true, then Exp2 is evaluated and becomes the value of the entire ? expression.
+
+- If Exp1 is false, then Exp3 is evaluated and its value becomes the value of the expression.
