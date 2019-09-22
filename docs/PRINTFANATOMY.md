@@ -77,6 +77,8 @@ to be printed.
 
 If you want to print a decimal integer number in base 10, you'd use either d or i (synonyms with printf): %d or %i.
 
+If you want to print a decimal unsigned integer number in base 10, you'd use u: %u.
+
 If you want to print an integer in octal or hexadecimal you'd use o for octal, or x for hexadecimal. 
 
 If you want capital letters (A instead of a when printing out decimal 10) then you can use X.
