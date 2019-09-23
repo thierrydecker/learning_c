@@ -145,11 +145,13 @@ To check for a null pointer, you can use an 'if' statement as follows:
 ## Pointers in Detail
 
 Pointers have many but easy concepts and they are very important to C programming. The following important pointer 
-concepts should be clear to any C programmer −
+concepts should be clear to any C programmer:
 
 ### Pointer arithmetic
 
 There are four arithmetic operators that can be used in pointers: ++, --, +, -
+
+
 
 ### Array of pointers
 
