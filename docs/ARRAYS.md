@@ -209,8 +209,250 @@ you create will be of one or two dimensions.
 
 ### Passing arrays to functions
 
+If you want to pass a single-dimension array as an argument in a function, you would have to declare a formal parameter 
+in one of following three ways and all three declaration methods produce similar results because each tells the compiler 
+that an integer pointer is going to be received. Similarly, you can pass multi-dimensional arrays as formal parameters.
 
+#### Way-1
+
+Formal parameters as a pointer:
+
+    void myFunction(int *param) {
+        .
+        .
+        .
+    }
+
+#### Way-2
+
+Formal parameters as a sized array:
+
+    void myFunction(int param[10]) {
+        .
+        .
+        .
+    }
+
+#### Way-3
+
+Formal parameters as an unsized array:
+
+    void myFunction(int param[]) {
+        .
+        .
+        .
+    }
+
+#### Example
+
+Now, consider the following function, which takes an array as an argument along with another argument and based on the 
+passed arguments, it returns the average of the numbers passed through the array as follows:
+
+```
+double getAverage (int arr[], int size)
+{
+
+        int i;
+        double avg;
+        double sum = 0;
+
+        for (i = 0; i < size; ++i) {
+                sum += arr[i];
+        }
+
+        avg = sum / size;
+
+        return avg;
+}
+```
+
+Now, let us call the above function as follows:
+
+```
+#include <stdio.h>
+
+/* function declaration */
+double getAverage (int arr[], int size);
+
+int main ()
+{
+
+        /* an int array with 5 elements */
+        int balance[5] = {1000, 2, 3, 17, 50};
+        double avg;
+
+        /* pass pointer to the array as an argument */
+        avg = getAverage (balance, 5);
+
+        /* output the returned value */
+        printf ("Average value is: %f ", avg);
+
+        return 0;
+}
+```
+
+When the above code is compiled together and executed, it produces the following result:
+
+    Average value is: 214.400000
+
+As you can see, the length of the array doesn't matter as far as the function is concerned because C performs no bounds 
+checking for formal parameters.
 
 ### Return array from a function
 
+C programming does not allow to return an entire array as an argument to a function. However, you can return a pointer 
+to an array by specifying the array's name without an index.
+
+If you want to return a single-dimension array from a function, you would have to declare a function returning a pointer 
+as in the following example:
+
+    int * myFunction() {
+        .
+        .
+        .
+    }
+
+Second point to remember is that C does not advocate to return the address of a local variable to outside of the 
+function, so you would have to define the local variable as **_static_** variable.
+
+Now, consider the following function which will generate 10 random numbers and return them using an array and call this 
+function as follows:
+
+```
+#include <stdio.h>
+
+/* function to generate and return random numbers */
+int *getRandom ()
+{
+
+        static int r[10];
+        int i;
+
+        /* set the seed */
+        srand ((unsigned) time (NULL));
+
+        for (i = 0; i < 10; ++i) {
+                r[i] = rand ();
+                printf ("r[%d] = %d\n", i, r[i]);
+        }
+
+        return r;
+}
+
+/* main function to call above defined function */
+int main ()
+{
+
+        /* a pointer to an int */
+        int *p;
+        int i;
+
+        p = getRandom ();
+
+        for (i = 0; i < 10; i++) {
+                printf ("*(p + %d) : %d\n", i, *(p + i));
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled together and executed, it produces the following result:
+
+```
+r[0] = 313959809
+r[1] = 1759055877
+r[2] = 1113101911
+r[3] = 2133832223
+r[4] = 2073354073
+r[5] = 167288147
+r[6] = 1827471542
+r[7] = 834791014
+r[8] = 1901409888
+r[9] = 1990469526
+*(p + 0) : 313959809
+*(p + 1) : 1759055877
+*(p + 2) : 1113101911
+*(p + 3) : 2133832223
+*(p + 4) : 2073354073
+*(p + 5) : 167288147
+*(p + 6) : 1827471542
+*(p + 7) : 834791014
+*(p + 8) : 1901409888
+*(p + 9) : 1990469526
+```
+
 ### Pointer to an array
+
+**_It is most likely that you would not understand this section until you are through with the chapter 'Pointers'._**
+
+Assuming you have some understanding of pointers in C, let us start: An array name is a constant pointer to the first 
+element of the array. Therefore, in the declaration:
+
+    double balance[50];
+
+balance is a pointer to &balance[0], which is the address of the first element of the array balance. Thus, the following 
+program fragment assigns p as the address of the first element of balance:
+
+    double *p;
+    double balance[10];
+
+    p = balance;
+
+It is legal to use array names as constant pointers, and vice versa. Therefore, *(balance + 4) is a legitimate way of 
+accessing the data at balance[4].
+
+Once you store the address of the first element in 'p', you can access the array elements using *p, *(p+1), *(p+2) and 
+so on. 
+Given below is the example to show all the concepts discussed above:
+
+```
+#include <stdio.h>
+
+int main ()
+{
+
+        /* an array with 5 elements */
+        double balance[5] = {1000.0, 2.0, 3.4, 17.0, 50.0};
+        double *p;
+        int i;
+
+        p = balance;
+
+        /* output each array element's value */
+        printf ("Array values using pointer\n");
+
+        for (i = 0; i < 5; i++) {
+                printf ("*(p + %d) : %f\n", i, *(p + i));
+        }
+
+        printf ("Array values using balance as address\n");
+
+        for (i = 0; i < 5; i++) {
+                printf ("*(balance + %d) : %f\n", i, *(balance + i));
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result −
+
+```
+Array values using pointer
+*(p + 0) : 1000.000000
+*(p + 1) : 2.000000
+*(p + 2) : 3.400000
+*(p + 3) : 17.000000
+*(p + 4) : 50.000000
+Array values using balance as address
+*(balance + 0) : 1000.000000
+*(balance + 1) : 2.000000
+*(balance + 2) : 3.400000
+*(balance + 3) : 17.000000
+*(balance + 4) : 50.000000
+```
+
+In the above example, p is a pointer to double, which means it can store the address of a variable of double type. 
+Once we have the address in p, *p will give us the value available at the address stored in p, as we have shown in the 
+above example.
