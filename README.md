@@ -22,6 +22,7 @@
 - [Structures](docs/STRUCTURES.md)
 - [Unions](docs/UNIONS.md)
 - [Bit Fields](docs/BITFIELDS.md)
+- [Typedef](docs/TYPEDEF.md)
 
 ## Annexes
 
