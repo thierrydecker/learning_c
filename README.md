@@ -14,6 +14,7 @@
 - [Operators](docs/OPERATORS.md)
 - [Decision making](docs/DECISIONMAKING.md)
 - [Loops](docs/LOOPS.md)
+- [Functions](docs/FUNCTIONS.md)
 
 ## Annexes
 - [printf format identifiers](docs/PRINTFFORMAT.md)
