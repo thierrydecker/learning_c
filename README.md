@@ -20,8 +20,8 @@
 - [Pointers](docs/POINTERS.md)
 
 ## Annexes
-- [printf format identifiers](docs/PRINTFFORMAT.md)
-- [Anatomy of format string](docs/PRINTFANATOMY.md)
+- [printf format identifiers](docs/annexes/PRINTFFORMAT.md)
+- [Anatomy of format string](docs/annexes/PRINTFANATOMY.md)
 - [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
-- [Compilation](docs/COMPILATION.md)
+- [Compilation](docs/annexes/COMPILATION.md)
 - [Pointers](docs/annexes/ANNEXES_POINTERS.md)
