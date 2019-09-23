@@ -21,6 +21,7 @@
 - [Strings](docs/STRINGS.md)
 - [Structures](docs/STRUCTURES.md)
 - [Unions](docs/UNIONS.md)
+- [Bit Fields](docs/BITFIELDS.md)
 
 ## Annexes
 
