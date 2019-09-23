@@ -16,10 +16,11 @@
 - [Loops](docs/LOOPS.md)
 - [Functions](docs/FUNCTIONS.md)
 - [Scope rules](docs/SCOPERULES.md)
+- [Arrays](docs/ARRAYS.md)
 
 ## Annexes
 - [printf format identifiers](docs/PRINTFFORMAT.md)
 - [Anatomy of format string](docs/PRINTFANATOMY.md)
-- [Arrays](docs/ANNEXES_ARRAYS.md)
+- [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)
 - [Pointers](docs/POINTERS.md)

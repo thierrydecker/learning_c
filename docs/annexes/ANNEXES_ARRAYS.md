@@ -12,7 +12,7 @@ Here, you can identify the location of any of your friends by simply knowing the
 
 > **Remember:** “Location of next index depends on the data type we use”.
 
-![Arrays in memory](images/array-2.png)
+![Arrays in memory](../images/array-2.png)
 
 The above image can be looked as a top-level view of a staircase where you are at the base of staircase.
 Each element can be uniquely identified by their index in the array (in a similar way as you could identify your 
@@ -34,7 +34,7 @@ friends by the step on which they were on in the above example).
     allow negative index values and other scalar data types like enumerations, or characters may be used as an 
     array index.
 
-![Arrays in memory](images/Array-In-C.png)
+![Arrays in memory](../images/Array-In-C.png)
 
 ## Advantages of using arrays:
 
@@ -64,7 +64,7 @@ Usually, an array of characters is called a ‘string’, whereas an array of in
 
 An array is collection of items stored at **_continuous_** memory locations.
 
-![Arrays in memory](images/Arrays.png)
+![Arrays in memory](../images/Arrays.png)
 
 ## Why do we need arrays?
 
@@ -74,7 +74,7 @@ many instances in one variable.
 
 ## Array declaration in C:
 
-![Arrays in memory](images/Array-Declaration-In-C.png)
+![Arrays in memory](../images/Array-Declaration-In-C.png)
 
 We can declare an array by specifying its type and size or by initializing it or by both.
 
@@ -126,7 +126,7 @@ int arr[] = {10, 20, 30, 40, 0, 0};
 
 Array elements are accessed by using an integer index. Array index starts with 0 and goes till size of array minus 1.
 
-![Arrays in memory](images/Array-In-C.png)
+![Arrays in memory](../images/Array-In-C.png)
 
 #### Following are a few examples:
 
@@ -259,11 +259,11 @@ indicates the address of first element and arrays are always passed as pointers 
 
 Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.
 
-![Arrays in memory](images/simplearray.png)
+![Arrays in memory](../images/simplearray.png)
 
 Rotation of the above array by 2 will make array:
 
-![Arrays in memory](images/arrayRotation.png)
+![Arrays in memory](../images/arrayRotation.png)
 
 #### METHOD 1 (Using temp array):
 
