@@ -17,6 +17,7 @@
 - [Functions](docs/FUNCTIONS.md)
 - [Scope rules](docs/SCOPERULES.md)
 - [Arrays](docs/ARRAYS.md)
+- [Pointers](docs/POINTERS.md)
 
 ## Annexes
 - [printf format identifiers](docs/PRINTFFORMAT.md)
