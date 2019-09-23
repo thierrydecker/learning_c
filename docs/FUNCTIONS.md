@@ -149,7 +149,9 @@ and destroyed upon exit.
 
 While calling a function, there are two ways in which arguments can be passed to a function:
 
-- **_Call by value_**: This method copies the actual value of an argument into the formal parameter of the function. In 
+### Call by value
+
+This method copies the actual value of an argument into the formal parameter of the function. In 
 this case, changes made to the parameter inside the function have no effect on the argument.
 
 By default, C uses call by value to pass arguments. In general, it means the code within a function cannot alter the 
@@ -210,7 +212,9 @@ After swap, value of b :200
 
 It shows that there are no changes in the values, though they had been changed inside the function.
 
-- **_Call by reference_**: This method copies the address of an argument into the formal parameter. Inside the function, 
+### Call by reference 
+
+This method copies the address of an argument into the formal parameter. Inside the function, 
 the address is used to access the actual argument used in the call. This means that changes made to the parameter affect 
 the argument.
 
