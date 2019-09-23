@@ -23,4 +23,4 @@
 - [Anatomy of format string](docs/PRINTFANATOMY.md)
 - [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
 - [Compilation](docs/COMPILATION.md)
-- [Pointers](docs/POINTERS.md)
+- [Pointers](docs/annexes/ANNEXES_POINTERS.md)

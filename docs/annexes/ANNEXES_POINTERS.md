@@ -37,7 +37,7 @@ foo_ptr's type is int *. (Thus, “pointer variable” really means “variable 
 The point of that is that the pointer is not the variable! The pointer to foo is the contents of foo_ptr. You could 
 put a different pointer in the foo_ptr box, and the box would still be foo_ptr. But it would no longer point to foo.
 
-![Arrays in memory](images/boxes.png)
+![Arrays in memory](../images/boxes.png)
 
 The pointer has a type, too, by the way. Its type is int. Thus it is an “int pointer” (a pointer to int). 
 An int **'s type is int * (it points to a pointer to int). The use of pointers to pointers is called multiple 
@@ -54,7 +54,7 @@ int main()
 }
 ```
 
-![Arrays in memory](images/pointers_in_memory.png)
+![Arrays in memory](../images/pointers_in_memory.png)
 
 ## Interlude: Declaration syntax
 
@@ -267,9 +267,9 @@ printf("%i\n", array_ptr[1]);
 
 That one might bend the brain a little. Here's a diagram:
 
-![Arrays in memory](images/array_indexing.png)
+![Arrays in memory](../images/array_indexing.png)
 
-![Arrays in memory](images/pointer_to_array_element.png)
+![Arrays in memory](../images/pointer_to_array_element.png)
 
 array points to the first element of the array; array_ptr is set to &array[1], so it points to the second element of
 the array. So array_ptr[1] is equivalent to array[2] (array_ptr starts at the second element of the array, so the 
