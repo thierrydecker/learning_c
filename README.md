@@ -15,6 +15,7 @@
 - [Decision making](docs/DECISIONMAKING.md)
 - [Loops](docs/LOOPS.md)
 - [Functions](docs/FUNCTIONS.md)
+- [Scope rules](docs/SCOPERULES.md)
 
 ## Annexes
 - [printf format identifiers](docs/PRINTFFORMAT.md)
