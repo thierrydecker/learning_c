@@ -19,6 +19,7 @@
 - [Arrays](docs/ARRAYS.md)
 - [Pointers](docs/POINTERS.md)
 - [Strings](docs/STRINGS.md)
+- [Structures](docs/STRUCTURES.md)
 
 ## Annexes
 - [printf format identifiers](docs/annexes/PRINTFFORMAT.md)
