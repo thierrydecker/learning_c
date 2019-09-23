@@ -149,13 +149,276 @@ concepts should be clear to any C programmer:
 
 ### Pointer arithmetic
 
-There are four arithmetic operators that can be used in pointers: ++, --, +, -
+There are four arithmetic operators that can be used in pointers: 
 
+- \++
+- \--
+- \+
+- \-
 
+A pointer in c is an address, which is a numeric value. Therefore, you can perform arithmetic operations on a pointer 
+just as you can on a numeric value. There are four arithmetic operators that can be used on pointers: ++, --, +, and -
+
+To understand pointer arithmetic, let us consider that ptr is an integer pointer which points to the address 1000. 
+
+Assuming 32-bit integers, let us perform the following arithmetic operation on the pointer:
+
+    ptr++
+
+After the above operation, the ptr will point to the location 1004 because each time ptr is incremented, it will point 
+to the next integer location which is 4 bytes next to the current location.
+
+This operation will move the pointer to the next memory location without impacting the actual value at the memory 
+location. 
+If ptr points to a character whose address is 1000, then the above operation will point to the location 1001 because 
+the next character will be available at 1001.
+
+#### Incrementing a Pointer
+
+We prefer using a pointer in our program instead of an array because the variable pointer can be incremented, unlike 
+the array name which cannot be incremented because it is a constant pointer. 
+
+The following program increments the variable pointer to access each succeeding element of the array:
+
+```
+#include <stdio.h>
+
+const int MAX = 3;
+
+int main ()
+{
+
+        int var[] = {10, 100, 200};
+        int i, *ptr;
+
+        /* let us have array address in pointer */
+        ptr = var;
+
+        for (i = 0; i < MAX; i++) {
+
+                printf ("Address of var[%d] = %x\n", i, ptr);
+                printf ("Value of var[%d] = %d\n", i, *ptr);
+
+                /* move to the next location */
+                ptr++;
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result −
+
+```
+Address of var[0] = bf882b30
+Value of var[0] = 10
+Address of var[1] = bf882b34
+Value of var[1] = 100
+Address of var[2] = bf882b38
+Value of var[2] = 200
+```
+
+#### Decrementing a Pointer
+
+The same considerations apply to decrementing a pointer, which decreases its value by the number of bytes of its data 
+type as shown below:
+
+```
+#include <stdio.h>
+
+const int MAX = 3;
+
+int main ()
+{
+
+        int var[] = {10, 100, 200};
+        int i, *ptr;
+
+        /* let us have array address in pointer */
+        ptr = &var[MAX - 1];
+
+        for (i = MAX; i > 0; i--) {
+
+                printf ("Address of var[%d] = %x\n", i - 1, ptr);
+                printf ("Value of var[%d] = %d\n", i - 1, *ptr);
+
+                /* move to the previous location */
+                ptr--;
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result:
+
+```
+Address of var[2] = bfedbcd8
+Value of var[2] = 200
+Address of var[1] = bfedbcd4
+Value of var[1] = 100
+Address of var[0] = bfedbcd0
+Value of var[0] = 10
+```
+
+#### Pointer Comparisons
+
+Pointers may be compared by using relational operators, such as ==, <, and >. If p1 and p2 point to variables that are 
+related to each other, such as elements of the same array, then p1 and p2 can be meaningfully compared.
+
+The following program modifies the previous example − one by incrementing the variable pointer so long as the address 
+to which it points is either less than or equal to the address of the last element of the array, which is 
+&var[MAX - 1] :
+
+```
+#include <stdio.h>
+
+const int MAX = 3;
+
+int main ()
+{
+
+        int var[] = {10, 100, 200};
+        int i, *ptr;
+
+        /* let us have address of the first element in pointer */
+        ptr = var;
+        i = 0;
+
+        while (ptr <= &var[MAX - 1]) {
+
+                printf ("Address of var[%d] = %x\n", i, ptr);
+                printf ("Value of var[%d] = %d\n", i, *ptr);
+
+                /* point to the next location */
+                ptr++;
+                i++;
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result:
+
+```
+Address of var[0] = bfdbcb20
+Value of var[0] = 10
+Address of var[1] = bfdbcb24
+Value of var[1] = 100
+Address of var[2] = bfdbcb28
+Value of var[2] = 200
+```
 
 ### Array of pointers
 
 You can define arrays to hold a number of pointers.
+
+Before we understand the concept of arrays of pointers, let us consider the following example, which uses an array of 
+3 integers:
+
+```
+#include <stdio.h>
+
+const int MAX = 3;
+
+int main ()
+{
+
+        int var[] = {10, 100, 200};
+        int i;
+
+        for (i = 0; i < MAX; i++) {
+                printf ("Value of var[%d] = %d\n", i, var[i]);
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result:
+
+```
+Value of var[0] = 10
+Value of var[1] = 100
+Value of var[2] = 200
+```
+There may be a situation when we want to maintain an array, which can store pointers to an int or char or any other 
+data type available.
+
+Following is the declaration of an array of pointers to an integer:
+
+    int *ptr[MAX];
+
+It declares ptr as an array of MAX integer pointers. Thus, each element in ptr, holds a pointer to an int value. 
+The following example uses three integers, which are stored in an array of pointers, as follows:
+
+```
+#include <stdio.h>
+
+const int MAX = 3;
+
+int main ()
+{
+
+        int var[] = {10, 100, 200};
+        int i, *ptr[MAX];
+
+        for (i = 0; i < MAX; i++) {
+                ptr[i] = &var[i]; /* assign the address of integer. */
+        }
+
+        for (i = 0; i < MAX; i++) {
+                printf ("Value of var[%d] = %d\n", i, *ptr[i]);
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result −
+
+```
+Value of var[0] = 10
+Value of var[1] = 100
+Value of var[2] = 200
+```
+
+You can also use an array of pointers to character to store a list of strings as follows:
+
+```
+#include <stdio.h>
+
+const int MAX = 4;
+
+int main ()
+{
+
+        char *names[] = {
+                "Zara Ali",
+                "Hina Ali",
+                "Nuha Ali",
+                "Sara Ali"
+        };
+
+        int i = 0;
+
+        for (i = 0; i < MAX; i++) {
+                printf ("Value of names[%d] = %s\n", i, names[i]);
+        }
+
+        return 0;
+}
+```
+
+When the above code is compiled and executed, it produces the following result −
+
+```
+Value of names[0] = Zara Ali
+Value of names[1] = Hina Ali
+Value of names[2] = Nuha Ali
+Value of names[3] = Sara Ali
+```
 
 ### Pointer to pointer
 
