@@ -20,8 +20,10 @@
 - [Pointers](docs/POINTERS.md)
 - [Strings](docs/STRINGS.md)
 - [Structures](docs/STRUCTURES.md)
+- [Unions](docs/UNIONS.md)
 
 ## Annexes
+
 - [printf format identifiers](docs/annexes/PRINTFFORMAT.md)
 - [Anatomy of format string](docs/annexes/PRINTFANATOMY.md)
 - [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
