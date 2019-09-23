@@ -167,8 +167,9 @@ value of c in main() = 30
 
 ## Initializing Local and Global Variables
 
-When a local variable is defined, it is not initialized by the system, you must initialize it yourself. Global variables 
-are initialized automatically by the system when you define them as follows:
+When a local variable is defined, it is not initialized by the system, you must initialize it yourself. 
+
+Global variables are initialized automatically by the system when you define them as follows:
 
 |Data Type|Initial Default Value|
 |:-------:|:-------------------:|
