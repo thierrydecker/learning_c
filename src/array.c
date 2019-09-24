@@ -67,13 +67,11 @@ int gcd (int a, int b)
  * */
 void array_rotate_method_three (int *array, int k, int n)
 {
-
         int tmp = 0;
         int s = gcd (k, n);
         int i = 0;
         int j = 0;
         int d = 0;
-
         for (i = 0; i < s; i++) {
                 tmp = array[i];
                 j = i;
@@ -87,5 +85,4 @@ void array_rotate_method_three (int *array, int k, int n)
                 }
                 array[j] = tmp;
         }
-
 }
