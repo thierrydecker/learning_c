@@ -24,6 +24,7 @@
 - [Bit Fields](docs/BITFIELDS.md)
 - [Typedef](docs/TYPEDEF.md)
 - [Inputs and outputs](docs/INPUTOUTPUT.md)
+- [Files I/O](docs/FILESIO.md)
 
 ## Annexes
 
