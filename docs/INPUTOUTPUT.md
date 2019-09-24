@@ -1,4 +1,4 @@
-# Input and output
+# Inputs and outputs
 
 When we say **_Input_**:
 

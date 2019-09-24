@@ -23,7 +23,7 @@
 - [Unions](docs/UNIONS.md)
 - [Bit Fields](docs/BITFIELDS.md)
 - [Typedef](docs/TYPEDEF.md)
-- [Input and output](docs/INPUTOUTPUT.md)
+- [Inputs and outputs](docs/INPUTOUTPUT.md)
 
 ## Annexes
 
