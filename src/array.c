@@ -40,3 +40,25 @@ void array_print (int *array, int array_size)
                 printf ("%d element: %d\n", i, array[i]);
         }
 }
+
+/*
+ * GCD algorithm
+ *
+ * Original Euclid's subtraction based
+ *
+ * */
+int gcd (int a, int b)
+{
+        if (a == 0 || b == 0) {
+                return 0;
+        } else {
+                while (a != b) {
+                        if (a > b) {
+                                a -= b;
+                        } else {
+                                b -= a;
+                        }
+                }
+                return a;
+        }
+}
