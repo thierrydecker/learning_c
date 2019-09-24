@@ -61,3 +61,31 @@ int gcd (int a, int b)
         }
         return a;
 }
+
+/*
+ * Rotation method 3 (Juggling algorithm)
+ * */
+void array_rotate_method_three (int *array, int k, int n)
+{
+
+        int tmp = 0;
+        int s = gcd (k, n);
+        int i = 0;
+        int j = 0;
+        int d = 0;
+
+        for (i = 0; i < s; i++) {
+                tmp = array[i];
+                j = i;
+                while (1) {
+                        d = (j + k) % n;
+                        if (d == i) {
+                                break;
+                        }
+                        array[j] = array[d];
+                        j = d;
+                }
+                array[j] = tmp;
+        }
+
+}
