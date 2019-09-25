@@ -3,4 +3,4 @@ project(learning_c C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(learning_c src/main.c src/array.h src/array.c src/extvars.c src/extvars.h src/printing.c src/printing.h ../../../../.CLion2019.2/config/scratches/test.cpp)
+add_executable(learning_c src/main.c src/array.h src/array.c src/extvars.c src/extvars.h src/printing.c src/printing.h src/linked_list.c src/linked_list.h)

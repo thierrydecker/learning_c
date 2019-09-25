@@ -58,9 +58,9 @@ In C, we can represent a node using structures.
 Below is an example of a linked list node with integer data.
 
 ```
-struct Node {
+struct Linked_List_Node {
         int data;
-        struct Node *next;
+        struct Linked_List_Node *next;
 }; 
 ```
 
@@ -75,11 +75,11 @@ First Simple Linked List in C Let us create a simple linked list with 3 nodes.
 #include <stdlib.h>
 
 /*
- * Declare the Node structure
+ * Declare the Linked_List_Node structure
  * */
-struct Node {
+struct Linked_List_Node {
         int data;
-        struct Node *next;
+        struct Linked_List_Node *next;
 };
 
 /*
@@ -88,19 +88,19 @@ struct Node {
 int main ()
 {
         /*
-         * Declare three pointers to the Node structure type
+         * Declare three pointers to the Linked_List_Node structure type
          * and initialize them to NULL (best practice)
          * */
-        struct Node *head = NULL;
-        struct Node *second = NULL;
-        struct Node *third = NULL;
+        struct Linked_List_Node *head = NULL;
+        struct Linked_List_Node *second = NULL;
+        struct Linked_List_Node *third = NULL;
 
         /*
          * allocate 3 nodes in the heap
          * */
-        head = (struct Node *) malloc (sizeof (struct Node));
-        second = (struct Node *) malloc (sizeof (struct Node));
-        third = (struct Node *) malloc (sizeof (struct Node));
+        head = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+        second = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+        third = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
 
         /* 
          * Three blocks have been allocated dynamically.
@@ -161,4 +161,93 @@ int main ()
         return 0;
 }
  
+```
+
+## Linked List Traversal
+
+In the previous program, we have created a simple linked list with three nodes. Let us traverse the created list and 
+print the data of each node. For traversal, let us write a general-purpose function printList() that prints any given 
+list.
+
+**_linked_list.h files:_**
+
+```
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
+struct Linked_List_Node {
+        int data;
+        struct Linked_List_Node *next;
+};
+
+void print_list (struct Linked_List_Node *n);
+
+#endif
+
+```
+
+**_linked_list.c files:_**
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include "linked_list.h"
+
+/*
+ * Print any given list
+ * */
+void print_list (struct Linked_List_Node *n)
+{
+        int i = 0;
+        while (n != NULL) {
+                printf ("(%d) Data: %d\n", i, n->data);
+                n = n->next;
+                i++;
+        }
+}
+```
+
+**_main.c file:_**
+
+```
+#include <stdlib.h>
+
+#include "linked_list.h"
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+
+        struct Linked_List_Node *head = NULL;
+        struct Linked_List_Node *second = NULL;
+        struct Linked_List_Node *third = NULL;
+
+        head = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+        second = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+        third = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+
+        head->data = 100;
+        head->next = second;
+
+        second->data = 200;
+        second->next = third;
+
+        third->data = 300;
+        third->next = NULL;
+
+        print_list (head);
+
+        return EXIT_SUCCESS;
+
+}
+```
+
+The execution of the program below gives us:
+
+```
+(0) Data: 100
+(1) Data: 200
+(2) Data: 300
 ```

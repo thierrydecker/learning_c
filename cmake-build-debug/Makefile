@@ -177,6 +177,33 @@ src/extvars.c.s:
 	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/extvars.c.s
 .PHONY : src/extvars.c.s
 
+src/linked_list.o: src/linked_list.c.o
+
+.PHONY : src/linked_list.o
+
+# target to build an object file
+src/linked_list.c.o:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/linked_list.c.o
+.PHONY : src/linked_list.c.o
+
+src/linked_list.i: src/linked_list.c.i
+
+.PHONY : src/linked_list.i
+
+# target to preprocess a source file
+src/linked_list.c.i:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/linked_list.c.i
+.PHONY : src/linked_list.c.i
+
+src/linked_list.s: src/linked_list.c.s
+
+.PHONY : src/linked_list.s
+
+# target to generate assembly for a file
+src/linked_list.c.s:
+	$(MAKE) -f CMakeFiles/learning_c.dir/build.make CMakeFiles/learning_c.dir/src/linked_list.c.s
+.PHONY : src/linked_list.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -246,6 +273,9 @@ help:
 	@echo "... src/extvars.o"
 	@echo "... src/extvars.i"
 	@echo "... src/extvars.s"
+	@echo "... src/linked_list.o"
+	@echo "... src/linked_list.i"
+	@echo "... src/linked_list.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
