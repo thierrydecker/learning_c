@@ -30,6 +30,7 @@
 - [Type casting](docs/TYPECASTING.md)
 - [Error handling](docs/ERRORHANDLING.md)
 - [Recursion](docs/RECURSION.md)
+- [Variable arguments](docs/VARIABLEARGUMENTS.md)
 
 ## Annexes
 
