@@ -45,8 +45,10 @@ convenience.
 Each module with its .h and .c file should correspond to a clear piece of functionality.  
 
 Conceptually, a module is a group of declarations and functions can be developed and maintained separately from other 
-modules, and perhaps even reused in entirely different projects. Don’t force together into a module things that will be 
-used or maintained separately, and don’t separate things that will always be used and maintained together.  
+modules, and perhaps even reused in entirely different projects. 
+
+Don’t force together into a module things that will be used or maintained separately, and don’t separate things that 
+will always be used and maintained together.  
 
 The Standard Library modules math.h and string.h are good examples of clearly distinct modules. 
 
@@ -85,8 +87,10 @@ All of the declarations needed to use a module must appear in its header file, a
 the module.
 
 Thus #including the header file provides all the information necessary for code using the module to compile and link 
-correctly. Furthermore, if module A needs to use module X’s functionality, it should always \#include "X.h" , and never 
-contain hard-coded declarations for structure or functions that appear in module X.  
+correctly.
+
+Furthermore, if module A needs to use module X’s functionality, it should always \#include "X.h" , and never contain 
+hard-coded declarations for structure or functions that appear in module X.  
 
 Why?
 
@@ -103,8 +107,10 @@ maintained, and helps enforce the One-Definition Rule.
 The header file contains only declarations, and is included by the .c file for the module. 
 
 Put only structure type declarations, function prototypes, and global variable extern declarations, in the .h file; put 
-the function definitions and global variable definitions and initializations in the .c file. The .c file for a module 
-must include the .h file; the compiler can detect discrepancies between the two, and thus help ensure consistency.
+the function definitions and global variable definitions and initializations in the .c file. 
+
+The .c file for a module must include the .h file; the compiler can detect discrepancies between the two, and thus help 
+ensure consistency.
 
 ## Rule #5
 
@@ -152,9 +158,10 @@ decision.
 Every header file A.h should \#include every other header file that A.h requires to compile correctly, but no more. 
 
 What is needed in A.h: If another structure type X is used as a member variable of a structure type A,  then you must 
-\#include X.h in A.h so that the compiler knows how large the X member is. Do not include header files that only the .c 
-file code needs. E.g. <math.h> is usually needed only by the function definitions – \#include it in .c file, not in the 
-.h file.
+\#include X.h in A.h so that the compiler knows how large the X member is. 
+
+Do not include header files that only the .c file code needs. E.g. <math.h> is usually needed only by the function 
+definitions – \#include it in .c file, not in the .h file.
 
 ## Rule #8
 
