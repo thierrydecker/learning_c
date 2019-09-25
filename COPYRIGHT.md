@@ -13,7 +13,7 @@ are met:
     notice, this list of conditions and the following disclaimer in the
     documentation and/or other materials provided with the distribution.
 
-3.  Neither my name (David L Parsons) nor the names of contributors to
+3.  Neither my name (Thierry Decker) nor the names of contributors to
     this code may be used to endorse or promote products derived
     from this work without specific prior written permission.
 
