@@ -180,18 +180,44 @@ struct Linked_List_Node {
         struct Linked_List_Node *next;
 };
 
+void linked_list (void);
 void print_list (struct Linked_List_Node *n);
 
 #endif
-
 ```
 
 **_linked_list.c files:_**
 
 ```
-#include <stdio.h>
-#include <stdlib.h>
 #include "linked_list.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+
+/*
+ * Call functions
+ * */
+void linked_list (void)
+{
+        struct Linked_List_Node *head = NULL;
+        struct Linked_List_Node *second = NULL;
+        struct Linked_List_Node *third = NULL;
+
+        head = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+        second = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+        third = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
+
+        head->data = 100;
+        head->next = second;
+
+        second->data = 200;
+        second->next = third;
+
+        third->data = 300;
+        third->next = NULL;
+
+        print_list (head);
+}
 
 /*
  * Print any given list
@@ -220,24 +246,8 @@ void print_list (struct Linked_List_Node *n)
 int main (int argv, char *args[])
 {
 
-        struct Linked_List_Node *head = NULL;
-        struct Linked_List_Node *second = NULL;
-        struct Linked_List_Node *third = NULL;
 
-        head = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
-        second = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
-        third = (struct Linked_List_Node *) malloc (sizeof (struct Linked_List_Node));
-
-        head->data = 100;
-        head->next = second;
-
-        second->data = 200;
-        second->next = third;
-
-        third->data = 300;
-        third->next = NULL;
-
-        print_list (head);
+        linked_list ();
 
         return EXIT_SUCCESS;
 
