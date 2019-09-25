@@ -1,6 +1,6 @@
 # Learning C
 
-## Table of Contents
+## The basics
 
 - [Introduction](docs/INTRO.md)
 - [Overview](docs/OVERVIEW.md)
