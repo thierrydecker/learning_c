@@ -135,7 +135,7 @@ void array_rotate_method_three (int *array, int k, int n)
 }
 ```
 
-####Method 4 (The Reversal Algorithm) :
+#### Method 4 (The Reversal Algorithm) :
 
 **_Algorithm :_**
 
