@@ -38,6 +38,7 @@
 
 - [Arrays](docs/data_structures/ARRAYS.md)
 - [Programs for array rotation](docs/data_structures/ARRAYS_ROTATION.md)
+- [Linked list](docs/data_structures/LINKEDLIST.md)
 
 ## System programming
 
