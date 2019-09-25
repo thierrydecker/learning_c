@@ -26,6 +26,7 @@
 - [Inputs and outputs](docs/INPUTOUTPUT.md)
 - [Files I/O](docs/FILESIO.md)
 - [Preprocessor](docs/PREPROCESSOR.md)
+- [Header file](docs/HEADER.md)
 
 ## Annexes
 
