@@ -28,6 +28,7 @@
 - [Preprocessor](docs/PREPROCESSOR.md)
 - [Header file](docs/HEADER.md)
 - [Type casting](docs/TYPECASTING.md)
+- [Error handling](docs/ERRORHANDLING.md)
 
 ## Annexes
 
