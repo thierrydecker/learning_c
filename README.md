@@ -34,12 +34,18 @@
 - [Memory management](docs/MEMORYMANAGEMENT.md)
 - [Command line arguments](docs/COMMANDLINEARGUMENTS.md)
 
+## Data structures
+
+- [Arrays](docs/data_structures/ARRAYS.md)
+- [Programs for array rotation](docs/data_structures/ARRAYS_ROTATION.md)
+
+## System programming
+
+- [Compilation](docs/system/COMPILATION.md)
+- [Memory layout](docs/system/MEMORY_LAYOUT.md)
+
 ## Annexes
 
 - [printf format identifiers](docs/annexes/ANNEXES_PRINTF_FORMAT.md)
 - [Anatomy of format string](docs/annexes/ANNEXES_PRINTF_ANATOMY.md)
-- [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
-- [Programs for array rotation](docs/annexes/ANNEXES_ARRAYS_ROTATION.md)
-- [Compilation](docs/annexes/ANNEXES_COMPILATION.md)
-- [Memory layout](docs/annexes/ANNEXES_MEMORY_LAYOUT.md)
 - [Pointers](docs/annexes/ANNEXES_POINTERS.md)

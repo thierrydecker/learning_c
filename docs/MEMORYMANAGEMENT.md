@@ -2,7 +2,7 @@
 
 Before reviewing memory management, a quick refresher can be found here :
 
-[Memory layout](annexes/ANNEXES_MEMORY_LAYOUT.md)
+[Memory layout](system/MEMORY_LAYOUT.md)
 
 This chapter explains dynamic memory management in C. The C programming language provides several functions for memory 
 allocation and management. 
