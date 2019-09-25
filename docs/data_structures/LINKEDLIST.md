@@ -56,3 +56,103 @@ Each node in a list consists of at least two parts:
 In C, we can represent a node using structures. 
 
 Below is an example of a linked list node with integer data.
+
+```
+struct Node {
+        int data;
+        struct Node *next;
+}; 
+```
+
+First Simple Linked List in C Let us create a simple linked list with 3 nodes.
+
+```
+/*
+ * A simple C program to introduce a linked list
+ * */
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+        int data;
+        struct Node *next;
+};
+
+/*
+ * Program to create a simple linked list with 3 nodes
+ * */
+int main ()
+{
+        /*
+         * Declare three pointers to the Node structure type
+         * and initialize them to NULL (best practice)
+         * */
+        struct Node *head = NULL;
+        struct Node *second = NULL;
+        struct Node *third = NULL;
+
+        /*
+         * allocate 3 nodes in the heap
+         * */
+        head = (struct Node *) malloc (sizeof (struct Node));
+        second = (struct Node *) malloc (sizeof (struct Node));
+        third = (struct Node *) malloc (sizeof (struct Node));
+
+        /* Three blocks have been allocated dynamically.
+         * We have pointers to these three blocks as head,
+         * second and third
+         * Data is random because we haven’t assigned
+         * anything yet
+         * */
+
+        /*
+         * Assign data in first node
+         * */
+        head->data = 1;
+
+        /*
+         * Link first node with the second node
+         * */
+        head->next = second;
+        /*
+         * Data has been assigned to the data part of the first
+         * block (block pointed by the head). And next
+         * pointer of first block points to second.
+         * So they both are linked.
+         * */
+
+        /*
+         * Assign data to second node
+         * */
+        second->data = 2;
+
+        /*
+         * Link second node with the third node
+         * */
+        second->next = third;
+
+        /*
+         * data has been assigned to the data part of the second
+         * block (block pointed by second). And next
+         * pointer of the second block points to the third
+         * block. So all three blocks are linked.
+         * */
+
+        third->data = 3; // assign data to third node
+        third->next = NULL;
+
+        /*
+         * data has been assigned to data part of third
+         * block (block pointed by third). And next pointer
+         * of the third block is made NULL to indicate
+         * that the linked list is terminated here.
+         *
+         * Note that only head is sufficient to represent
+         * the whole list. We can traverse the complete
+         * list by following next pointers.
+         * */
+
+        return 0;
+}
+ 
+```
