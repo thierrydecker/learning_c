@@ -29,9 +29,9 @@
 
 ## Annexes
 
-- [printf format identifiers](docs/annexes/PRINTFFORMAT.md)
-- [Anatomy of format string](docs/annexes/PRINTFANATOMY.md)
+- [printf format identifiers](docs/annexes/ANNEXES_PRINTF_FORMAT.md)
+- [Anatomy of format string](docs/annexes/ANNEXES_PRINTF_ANATOMY.md)
 - [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
-- [Programs for array rotation](docs/annexes/ANNEXES_ARRAYS.md)
-- [Compilation](docs/annexes/COMPILATION.md)
+- [Programs for array rotation](docs/annexes/ANNEXES_ARRAYS_ROTATION.md)
+- [Compilation](docs/annexes/ANNEXES_COMPILATION.md)
 - [Pointers](docs/annexes/ANNEXES_POINTERS.md)
