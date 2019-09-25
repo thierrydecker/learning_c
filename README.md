@@ -32,5 +32,6 @@
 - [printf format identifiers](docs/annexes/PRINTFFORMAT.md)
 - [Anatomy of format string](docs/annexes/PRINTFANATOMY.md)
 - [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
+- [Programs for array rotation](docs/annexes/ANNEXES_ARRAYS.md)
 - [Compilation](docs/annexes/COMPILATION.md)
 - [Pointers](docs/annexes/ANNEXES_POINTERS.md)
