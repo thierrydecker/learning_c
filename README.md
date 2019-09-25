@@ -50,3 +50,4 @@
 - [printf format identifiers](docs/annexes/PRINTF_FORMAT.md)
 - [Anatomy of format string](docs/annexes/PRINTF_ANATOMY.md)
 - [Pointers](docs/annexes/POINTERS.md)
+- [Headers best practices](docs/annexes/HEADERS_BEST_PRACTICE.md)
