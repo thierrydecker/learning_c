@@ -70,9 +70,13 @@ First Simple Linked List in C Let us create a simple linked list with 3 nodes.
 /*
  * A simple C program to introduce a linked list
  * */
+
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * Declare the Node structure
+ * */
 struct Node {
         int data;
         struct Node *next;
@@ -98,9 +102,11 @@ int main ()
         second = (struct Node *) malloc (sizeof (struct Node));
         third = (struct Node *) malloc (sizeof (struct Node));
 
-        /* Three blocks have been allocated dynamically.
+        /* 
+         * Three blocks have been allocated dynamically.
          * We have pointers to these three blocks as head,
          * second and third
+         * 
          * Data is random because we haven’t assigned
          * anything yet
          * */
