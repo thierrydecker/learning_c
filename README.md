@@ -40,4 +40,5 @@
 - [Arrays](docs/annexes/ANNEXES_ARRAYS.md)
 - [Programs for array rotation](docs/annexes/ANNEXES_ARRAYS_ROTATION.md)
 - [Compilation](docs/annexes/ANNEXES_COMPILATION.md)
+- [Memory management](docs/annexes/ANNEXES_MEMORY_MANAGEMENT.md)
 - [Pointers](docs/annexes/ANNEXES_POINTERS.md)
