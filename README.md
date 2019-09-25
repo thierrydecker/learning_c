@@ -27,6 +27,7 @@
 - [Files I/O](docs/FILESIO.md)
 - [Preprocessor](docs/PREPROCESSOR.md)
 - [Header file](docs/HEADER.md)
+- [Type casting](docs/TYPECASTING.md)
 
 ## Annexes
 
