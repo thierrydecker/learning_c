@@ -46,6 +46,6 @@
 
 ## Annexes
 
-- [printf format identifiers](docs/annexes/ANNEXES_PRINTF_FORMAT.md)
-- [Anatomy of format string](docs/annexes/ANNEXES_PRINTF_ANATOMY.md)
-- [Pointers](docs/annexes/ANNEXES_POINTERS.md)
+- [printf format identifiers](docs/annexes/PRINTF_FORMAT.md)
+- [Anatomy of format string](docs/annexes/PRINTF_ANATOMY.md)
+- [Pointers](docs/annexes/POINTERS.md)
