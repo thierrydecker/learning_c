@@ -35,8 +35,9 @@ type double and finally it gets divided by count yielding a double value.
 Type conversions can be implicit which is performed by the compiler automatically, or it can be specified explicitly 
 through the use of the cast operator. 
 
-It is considered good programming practice to use the cast operator whenever type conversions are necessary.
-Integer Promotion
+**_It is considered good programming practice to use the cast operator whenever type conversions are necessary._**
+
+## Integer Promotion
 
 Integer promotion is the process by which values of integer type "smaller" than int or unsigned int are converted 
 either to int or unsigned int. Consider an example of adding a character with an integer:
