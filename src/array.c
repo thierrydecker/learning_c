@@ -34,10 +34,10 @@ void array_rotate_method_two (int *array, int offset, int array_size)
 /*
  * Rotation method 3 (Juggling algorithm)
  * */
-void array_rotate_method_three (int *array, int k, int n)
+void array_rotate_method_three (int *array, int offset, int array_size)
 {
         int tmp = 0;
-        int s = gcd (k, n);
+        int s = gcd (offset, array_size);
         int i = 0;
         int j = 0;
         int d = 0;
@@ -45,7 +45,7 @@ void array_rotate_method_three (int *array, int k, int n)
                 tmp = array[i];
                 j = i;
                 while (1) {
-                        d = (j + k) % n;
+                        d = (j + offset) % array_size;
                         if (d == i) {
                                 break;
                         }
@@ -53,6 +53,33 @@ void array_rotate_method_three (int *array, int k, int n)
                         j = d;
                 }
                 array[j] = tmp;
+        }
+}
+
+/*
+ * Rotation method 4 (Reversal algorithm)
+ * */
+void array_rotate_method_four (int *array, int offset, int array_size)
+{
+        reverse_array_subset (array, 0, 0 + offset);
+        reverse_array_subset (array, offset, array_size);
+        reverse_array_subset (array, 0, array_size);
+}
+
+/*
+ * Reverse the elements of an array subset
+ * */
+void reverse_array_subset (int *array, int start, int end)
+{
+        int s = start;
+        int e = end - 1;
+        int tmp = 0;
+        while (e > s) {
+                tmp = array[s];
+                array[s] = array[e];
+                array[e] = tmp;
+                s++;
+                e--;
         }
 }
 

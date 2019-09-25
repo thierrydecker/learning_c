@@ -276,7 +276,7 @@ Input arr[] = [1, 2, 3, 4, 5, 6, 7], d = 2, n =7
 3) Store back the d elements
    arr[] = [3, 4, 5, 6, 7, 1, 2]
 ```
-A solution:
+_**A solution:**_
 
 ```
 /*
@@ -315,7 +315,7 @@ Rotate arr[] by one 2 times
 
 We get [2, 3, 4, 5, 6, 7, 1] after first rotation and [ 3, 4, 5, 6, 7, 1, 2] after second rotation.
 
-A solution:
+_**A solution:**_
 
 ```
 /*
@@ -363,7 +363,7 @@ c)    Finally in third set.
           arr[] after this step --> {4 5 6 7 8 9 10 11 12 1 2 3}
 ```
 
-A solution:
+_**A solution:**_
 
 ```
 /*
@@ -388,6 +388,60 @@ void array_rotate_method_three (int *array, int k, int n)
                         j = d;
                 }
                 array[j] = tmp;
+        }
+}
+```
+
+####Method 4 (The Reversal Algorithm) :
+
+**_Algorithm :_**
+
+    rotate(arr[], d, n)
+        reverse(arr[], 1, d) ;
+        reverse(arr[], d + 1, n);
+        reverse(arr[], 1, n);
+
+Let AB are the two parts of the input array where A = arr[0..d-1] and B = arr[d..n-1]. The idea of the algorithm is :
+
+    Reverse A to get ArB, where Ar is reverse of A.
+    Reverse B to get ArBr, where Br is reverse of B.
+    Reverse all to get (ArBr) r = BA.
+
+Example :
+Let the array be arr[] = [1, 2, 3, 4, 5, 6, 7], d =2 and n = 7
+A = [1, 2] and B = [3, 4, 5, 6, 7]
+
+    Reverse A, we get ArB = [2, 1, 3, 4, 5, 6, 7]
+    Reverse B, we get ArBr = [2, 1, 7, 6, 5, 4, 3]
+    Reverse all, we get (ArBr)r = [3, 4, 5, 6, 7, 1, 2]
+
+**_A solution:_**
+
+```
+/*
+ * Rotation method 4 (Reversal algorithm)
+ * */
+void array_rotate_method_four (int *array, int offset, int array_size)
+{
+        reverse_array_subset (array, 0, 0 + offset);
+        reverse_array_subset (array, offset, array_size);
+        reverse_array_subset (array, 0, array_size);
+}
+
+/*
+ * Reverse the elements of an array subset
+ * */
+void reverse_array_subset (int *array, int start, int end)
+{
+        int s = start;
+        int e = end - 1;
+        int tmp = 0;
+        while (e > s) {
+                tmp = array[s];
+                array[s] = array[e];
+                array[e] = tmp;
+                s++;
+                e--;
         }
 }
 ```
