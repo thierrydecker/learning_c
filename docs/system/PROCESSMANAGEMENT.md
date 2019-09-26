@@ -1,6 +1,38 @@
 # Process management
 
+Processes are, after files, the most fundamental abstraction in a Nix system.
+
+As object code in execution (active, alive, running programs), processes are more than just assembly language.
+
+They consist of data, resouces, state and a virtualized computer.
+
 ## Program vs Process vs Threads
+
+A _**binary**_ is compiled, executable code lying dormant on a storage medium such as a disk (we may also user the term 
+_**program**_)
+
+A _**process**_ is a running program.
+
+A process includes the binary image, loaded into memory, but also much more:
+
+- an instance of virtualized memory,
+- kernel resources such as open files,
+- a security context such as an associated user,
+- and one or more threads.
+
+A _**thread**_ is the unit of activity inside of a process.
+
+Each thread has its own virtualized processor, which includes: 
+
+- a stack, 
+- processor state (such as registers),
+- and an instruction pointer.
+
+In a single threaded process, the process is the thread.
+
+There is one instance of virtualized memory and one virtualized processor.
+
+As the virtualization of memory is associated with the process, the threads all share the same memory address space.
 
 ## The Process ID
 
