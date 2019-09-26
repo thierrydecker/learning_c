@@ -36,6 +36,20 @@ As the virtualization of memory is associated with the process, the threads all 
 
 ## The Process ID
 
+Each process is represented by a unique identifier, the **_process ID_** (frequently shortened to **_pid_**).
+
+The pid is guaranteed to be unique at **_any single point in time_**.
+
+That is, while at time t+0 there can be only one process with the pid 770 (if any process at all exists with such a 
+value). 
+
+There is no guarantee that at time t+1 a different process won't exist with pid 770.
+
+Essentially, however, most programs presume that the kernel does not reissue process identifiers (an assumption that, 
+as you will see shortly, is fairly safe).
+
+An, of course, from the view of a process, it's pid never changes. 
+
 ### Process ID allocation
 
 ### The Process Hierarchy
