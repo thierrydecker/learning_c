@@ -48,7 +48,7 @@ There is no guarantee that at time t+1 a different process won't exist with pid 
 Essentially, however, most programs presume that the kernel does not reissue process identifiers (an assumption that, 
 as you will see shortly, is fairly safe).
 
-An, of course, from the view of a process, it's pid never changes. 
+And, of course, from the view of a process, it's pid never changes. 
 
 ### Process ID allocation
 
