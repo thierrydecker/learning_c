@@ -72,6 +72,14 @@ The Linux kernel tries four executables, in the following order:
 
 **_4) /bin/sh:_** The location of the Bourne Shell, which the kernel tries to run if it fails to find an init process.
 
+The first of these processes that exists is executed as the init process.
+
+If all four processes fail to execute; the Linux kernel halts the system with a panic.
+
+After the handoff from the kernel, the init process handles the remainder of the boot process.
+
+Typically, this includes initializing the system, starting various services, and launching a login program.
+
 ### Process ID allocation
 
 ### The Process Hierarchy
