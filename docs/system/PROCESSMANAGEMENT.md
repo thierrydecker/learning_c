@@ -454,7 +454,7 @@ The use of an array allows the arguments to be determined at runtime.
 
 As with the variadic list of arguments, the array must be NULL-terminated.
 
-The following snippet uses execv() to execute vi, as we did previously:
+The following snippet uses execv() to execute nano, as we did previously:
 
 ```
 #include <stdlib.h>
