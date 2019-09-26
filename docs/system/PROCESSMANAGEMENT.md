@@ -487,6 +487,66 @@ in user space, the only option for the lone system call is execve().
 
 The system call prototype is identical to the user call.
 
+#### Error values
+
+On success, the exec system calls do not return. On failure, the calls return −1 and set errno to one of the following 
+values:
+
+- E2BIG
+
+The total number of bytes in the provided arguments list ( arg ) or environment (envp) is too large.
+
+- EACCES
+
+The process lacks search permission for a component in path ; path is not a regular file; the target file is not marked 
+executable; or the filesystem on which path or file resides is mounted noexec.
+- EFAULT
+
+A given pointer is invalid.
+- EIO
+
+A low-level I/O error occurred (this is bad).
+
+- EISDIR
+
+The final component in path , or the interpreter, is a directory.
+
+- ELOOP
+
+The system encountered too many symbolic links in resolving path .
+
+- EMFILE
+
+The invoking process has reached its limit on open files.
+- ENFILE
+
+The system-wide limit on open files has been reached.
+
+- ENOENT
+
+The target of path or file does not exist, or a needed shared library does not exist.
+
+- ENOEXEC
+
+The target of path or file is an invalid binary or is intended for a different machine architecture.
+
+- ENOMEM
+
+There is insufficient kernel memory available to execute a new program.
+
+- ENOTDIR
+
+A nonfinal component in path is not a directory.
+
+- EPERM
+
+The filesystem on which path or file resides is mounted nosuid , the user is not root, and path or file has the suid or 
+sgid bit set.
+
+- ETXTBSY
+
+The target of path or file is open for writing by another process.
+
 ### The fork() System Call
 
 ## Terminating a Process
