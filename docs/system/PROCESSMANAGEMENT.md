@@ -258,6 +258,8 @@ There is no single exec function.
 
 Instead, there is a family of exec functions built on a single system call.
 
+#### execl
+
 Let's first look at the simplest of these calls, _**execl()**_:
 
 ```
@@ -368,6 +370,69 @@ However, this is often not the desired behavior.
 
 The usual practice is to close files before the exec, althoug it is also possible to instruct the kernel to do so 
 automatically via the **_fcntl()_** function. 
+
+#### The rest of the family
+
+In addition to execl(), here are five other members of the exec family:
+
+```
+#include <unistd.h>
+
+int execlp (const char *file,
+            const char *arg,
+            ...);
+
+int execle (const char *path,
+            const char *arg,
+            ...,
+            char * const envp[]);
+
+int execv (const char *path, char *const argv[]);
+
+int execvp (const char *file, char *const argv[]);
+
+int execve (const char *filename,
+            char *const argv[],
+            char *const envp[]);
+```
+
+The mnemonics are simple:
+
+The **_l_** and **_v_** delineate whether the arguments are provided via a list or an array (vector).
+
+The **_p_** denotes that the user's full path is searched for the given file.
+
+Commands using the p variant ca nspecify just a filename, so long as it is located in the user's path.
+
+Finally, the **_e_** notes that a new environment is also supplied for the new process. 
+
+Curiously, although there is no technical reason for the omission, the exec family contains no member that both searches 
+the path and takes a new environment. 
+
+This is probably because the p variants were implemented for use by shells, and shell-executed processes generally 
+inherit their environments from the shell.
+
+The following snippet uses execvp() to execute nano, as we did previously, relying on the fact that nano is in the 
+user’s path:
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        int ret;
+        ret = execvp ("nano", "nano", "/etc/network/interfaces", NULL);
+        if (ret == -1) {
+                perror ("execvp");
+        }
+        return EXIT_SUCCESS;
+}
+```
 
 ### The fork() System Call
 
