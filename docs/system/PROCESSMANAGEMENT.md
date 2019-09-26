@@ -104,9 +104,132 @@ does provide at least short-term comfort is the statbility and uniqueness of pid
 
 ### The Process Hierarchy
 
+The process that spawns a new process is known as the ***parent***.
+
+The new process is known as the ***child***.
+
+Every process is spawned from another process (except, of course, the init process).
+
+Therefore, every child has a parent.
+
+This relationship is recorded in each process's ***parent process ID*** (ppid), which is the pid of the child's parent.
+
+Each process is owned by a ***user*** and a ***group***.
+
+This ownership is used to control access rights to resources.
+
+To the kernel, users and groups are mere integer values.
+
+Through the files ***/etc/paswd*** and ***/etc/group***, these integers are mapped to human-readable strings which Linux users are
+familiar, such as the user ***root*** or the group ***wheel*** (generally speaking, the Linux kernel has no interest in human-readable
+strings, and prefers to identify objects with integers.)
+
+Each child process inherits its parent's user and group ownership.
+
+Each process is also part of a ***process group***, which simply expresses its relationship to other processes and should not be
+confused with the aforementioned user/group concept.
+
+Children normally belong to the same process group as their parents.
+
+In addition, when a shell starts up a pipeline (e.g., when a user enters ***ls | less***), all the commands in the pipeline go
+into the same process group.
+
+The notion of process group makes it easy to send signals or get information on an entire pipeline, as well as all children
+of the process in the pipeline.
+
+From the perspective of a user, a process group is closely related to a ***job***.
+
 ### pid_t
 
+Programmatically, the process ID is represented by the pid_type, whic is defined in the header file ***<sys/types.h>***.
+
+The exact backing C type is architecture specific and not defined by any C standard.
+
+On Linux, however, ***pid_t*** a typedef to the C int type.
+
 ### Obtaining the Process ID and Parent Process ID
+
+The ***getpid()*** system call returns the process ID of the invoking process:
+
+```
+\#include <unistd.h>
+
+pid_t getpid (void);
+```
+
+The ***getppid()*** system call returns the process ID of the invoking process's parent:
+
+```
+\#include <unistd.h>
+
+pid_t getppid (void);
+```
+
+Neither call will return an error and consequently, their usage is trivial.
+
+***process.h:***
+
+```
+#ifndef PROCESSES_H
+#define PROCESSES_H
+
+void process_print (void);
+void pid_print ();
+void ppid_print ();
+
+#endif
+```
+
+***process.c:***
+
+```
+#include "processes.h"
+
+#include <stdio.h>
+#include <unistd.h>
+
+/*
+ * Print process related values
+ * */
+void process_print (void)
+{
+        pid_print ();
+        ppid_print ();
+}
+
+/*
+ * Print the Process ID
+ * */
+void pid_print (void)
+{
+        printf ("My pid is: %d\n", getpid ());
+}
+
+/*
+ * Print the Parent Process ID
+ * */
+void ppid_print (void)
+{
+        printf ("My parent's pid is: %d\n", getppid ());
+}
+```
+
+***mainc.c:***
+
+```
+#include <stdlib.h>
+
+#include "processes.h"
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        process_print ();
+        return EXIT_SUCCESS;
+}
+```
 
 ## Running a New Process
 

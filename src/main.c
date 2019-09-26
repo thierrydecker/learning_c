@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "linked_list.h"
+#include "processes.h"
 
 /*
  * Main function
@@ -9,7 +9,7 @@ int main (int argv, char *args[])
 {
 
 
-        linked_list ();
+        process_print ();
 
         return EXIT_SUCCESS;
 
