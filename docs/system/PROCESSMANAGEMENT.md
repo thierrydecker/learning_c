@@ -549,6 +549,49 @@ The target of path or file is open for writing by another process.
 
 ### The fork() System Call
 
+A new process running the same image as the current one can be created via the fork() system call:
+
+```
+#include <sys/types.h>
+#include <unistd.h>
+
+pid_t fork (void);
+```
+
+A successful call to **_fork()_** creates a new process, identical in almost all aspects to the invoking process. 
+
+Both processes continue to run, returning from fork() as if nothing special had happened.
+
+The new process is called the “child” of the original process, which in turn is called the “parent". 
+
+In the child, a successful invocation of fork() returns 0.
+
+In the parent, fork() returns the pid of the child. The child and the parent process are identical in nearly every 
+facet, except for a few necessary differences:
+
+- The pid of the child is, of course, newly allocated and different from that of the parent.
+
+- The child’s parent pid is set to the pid of its parent process.
+
+- Resource statistics are reset to zero in the child.
+
+- Any pending signals are cleared and not inherited by the child.
+
+- Any acquired file locks are not inherited by the child.
+
+On error, a child process is not created, **_fork() returns −1_**, and errno is set appropriately.
+
+There are two possible errno values, with three possible meanings:
+
+- EAGAIN
+
+The kernel failed to allocate certain resources, such as a new pid, or the **_RLIMIT_NPROC_** resource limit 
+(**_rlimit_**) has been reached.
+
+- ENOMEM
+
+Insufficient kernel memory was available to complete the request.
+
 ## Terminating a Process
 
 ### Other Ways to Terminate
