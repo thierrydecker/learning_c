@@ -6,7 +6,7 @@
 
 ### Process ID allocation
 
-### The Process Hierarchy
+### The Process Hierarchy
 
 ### pid_t
 
