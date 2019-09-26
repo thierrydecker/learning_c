@@ -141,7 +141,7 @@ From the perspective of a user, a process group is closely related to a ***job**
 
 ### pid_t
 
-Programmatically, the process ID is represented by the pid_type, whic is defined in the header file ***<sys/types.h>***.
+Programmatically, the process ID is represented by the pid_type, which is defined in the header file ***<sys/types.h>***.
 
 The exact backing C type is architecture specific and not defined by any C standard.
 
@@ -206,7 +206,7 @@ void pid_print (void)
 }
 
 /*
- * Print the Parent Process ID
+ * Print the Parent's Process ID
  * */
 void ppid_print (void)
 {

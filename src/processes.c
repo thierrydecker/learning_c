@@ -21,7 +21,7 @@ void pid_print (void)
 }
 
 /*
- * Print the Parent Process ID
+ * Print the Parent's Process ID
  * */
 void ppid_print (void)
 {
