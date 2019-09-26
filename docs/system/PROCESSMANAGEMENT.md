@@ -48,7 +48,29 @@ There is no guarantee that at time t+1 a different process won't exist with pid 
 Essentially, however, most programs presume that the kernel does not reissue process identifiers (an assumption that, 
 as you will see shortly, is fairly safe).
 
-And, of course, from the view of a process, it's pid never changes. 
+And, of course, from the view of a process, it's pid never changes.
+
+The **_idle_** process, which is the process the kernel "runs" when there are no other runnable processes, has the pid 0.
+
+The first process that the kernel executes after booting the system, called the **_init process_**, has the pid 1.
+
+Normally, the init process on the Linux system is the **_init_** program.
+
+We use the term "init" to refer to both the initial process that the kernel runs, and the specific program used for that
+purpose.
+
+Unless the user explicitly tells the kernel what process to run (through the **_init_** kernel command-line parameter),
+the kernel has to identify a suitable init process on ts own.
+
+The Linux kernel tries four executables, in the following order:
+
+**_1) /sbin/init:_** The preferred and most likely location for the init process.
+
+**_2) /etc/init:_** Another likely location for the init process.
+
+**_3) /bin/init:_** A fallback location for the init process.
+
+**_4) /bin/sh:_** The location of the Bourne Shell, which the kernel tries to run if it fails to find an init process.
 
 ### Process ID allocation
 
