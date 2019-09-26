@@ -7,10 +7,11 @@
  * */
 int main (int argv, char *args[])
 {
+        char *const arguments[] = {"nano", "/etc/network/interfaces", NULL};
         int ret;
-        ret = execl ("/bin/nano", "nano", "/etc/network/interfaces", NULL);
+        ret = execv ("/bin/nano", arguments);
         if (ret == -1) {
-                perror ("execl");
+                perror ("execv");
         }
         return EXIT_SUCCESS;
 }

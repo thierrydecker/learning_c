@@ -443,9 +443,47 @@ int main (int argv, char *args[])
     Doing so opens a security hole as the invoking user may set environment variables to manipulate the behavior of the
     shell. 
 
-    The most common form of this attack is path injection, in which the attacker sets the PATH variable to cause the process 
-    to execlp() a binary of the attacker’s choosing, effectively allowing the attacker to run any program with the 
-    credentials of the set-group-ID or set-user-ID program.
+    The most common form of this attack is path injection, in which the attacker sets the PATH variable to cause the 
+    process to execlp() a binary of the attacker’s choosing, effectively allowing the attacker to run any program with 
+    the credentials of the set-group-ID or set-user-ID program.
+
+The members of the exec family that accept an array work about the same, except that an array is constructed and passed 
+in instead of a list. 
+
+The use of an array allows the arguments to be determined at runtime. 
+
+As with the variadic list of arguments, the array must be NULL-terminated.
+
+The following snippet uses execv() to execute vi, as we did previously:
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        char *const arguments[] = {"nano", "/etc/network/interfaces", NULL};
+        int ret;
+        ret = execv ("/bin/nano", arguments);
+        if (ret == -1) {
+                perror ("execv");
+        }
+        return EXIT_SUCCESS;
+}
+```
+
+In Linux, only one member of the exec family is a system call. 
+
+The rest are wrappers in the C library around the system call. 
+
+Because variadic system calls would be difficult to implement and because the concept of the user’s path exists solely 
+in user space, the only option for the lone system call is execve(). 
+
+The system call prototype is identical to the user call.
 
 ### The fork() System Call
 
