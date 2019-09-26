@@ -44,6 +44,7 @@
 
 - [Compilation](docs/system/COMPILATION.md)
 - [Memory layout](docs/system/MEMORY_LAYOUT.md)
+- [Process management](docs/system/PROCESSMANAGEMENT.md)
 
 ## Annexes
 
