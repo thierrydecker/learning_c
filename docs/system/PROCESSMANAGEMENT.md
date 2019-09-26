@@ -11,7 +11,7 @@ They consist of data, resouces, state and a virtualized computer.
 A _**binary**_ is compiled, executable code lying dormant on a storage medium such as a disk (we may also user the term 
 _**program**_)
 
-A _**process**_ is a running program.
+A _**process**_ is a **running** program.
 
 A process includes the binary image, loaded into memory, but also much more:
 
