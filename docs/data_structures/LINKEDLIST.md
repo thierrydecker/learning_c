@@ -261,3 +261,59 @@ The execution of the program below gives us:
 (1) Data: 200
 (2) Data: 300
 ```
+
+## Inserting a node
+
+We have introduced Linked Lists in the previous paragraphs. 
+
+We also created a simple linked list with 3 nodes and discussed linked list traversal.
+
+All programs discussed in this post consider following representations of linked list:
+
+```
+struct Linked_List_Node {
+        int data;
+        struct Linked_List_Node *next;
+};
+```
+
+In this post, methods to insert a new node in linked list are discussed. 
+
+A node can be added in three ways:
+
+- At the front of the linked list
+- After a given node.
+- At the end of the linked list.
+
+### Add a node at the front: (A 4 steps process)
+
+The new node is always added before the head of the given Linked List. 
+
+And newly added node becomes the new head of the Linked List. 
+
+For example if the given Linked List is 10->15->20->25 and we add an item 5 at the front, then the Linked List becomes 
+5->10->15->20->25. 
+
+Let us call the function that adds at the front of the list is push(). 
+
+The push() must receive a pointer to the head pointer, because push must change the head pointer to point to the new 
+node (See this)
+
+![Linked list](../images/Linkedlist_insert_at_start.png)
+
+- **_Step 1:_** 
+
+    Allocate node.
+
+- **_Step 2:_**
+
+    Put data in the node.
+    
+- **_Step 3:_**
+
+    Make next of new node as head.
+    
+- **_Step 4:_**
+
+    Move the head to point to the new node.
+
