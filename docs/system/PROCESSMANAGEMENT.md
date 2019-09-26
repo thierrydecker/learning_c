@@ -42,7 +42,29 @@
 
 ## Users and Groups
 
+### Real, Effective and Saved Users and Group IDs
+
+### Changing the Real or Saved User or Group ID
+
+### Changing the Effective User or Group ID
+
+### Changing the Effective User or Group ID, BSD Style
+
+### Changing the Effective User or Group ID, HP-UX Style
+
+### Preferred User/Group ID Manipulation
+
+### Support for Saved Users IDs
+
+### Obtaining the User and Group IDs
+
 ## Sessions and Process Groups
+
+### Session System Calls
+
+### Process Group System Calls
+
+### Obsolete Process Group Functions
 
 ## Daemons
 
