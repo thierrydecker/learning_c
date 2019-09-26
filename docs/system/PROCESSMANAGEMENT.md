@@ -434,6 +434,19 @@ int main (int argv, char *args[])
 }
 ```
 
+#### Security Risk with execlp() and execvp()
+
+    Set-group-ID and set-user-ID programs (processes that run as the group or user of their binary’s owner and not the 
+    group or user of their invoker, respectively) should never invoke the shell or operations that in turn invoke the 
+    shell. 
+
+    Doing so opens a security hole as the invoking user may set environment variables to manipulate the behavior of the
+    shell. 
+
+    The most common form of this attack is path injection, in which the attacker sets the PATH variable to cause the process 
+    to execlp() a binary of the attacker’s choosing, effectively allowing the attacker to run any program with the 
+    credentials of the set-group-ID or set-user-ID program.
+
 ### The fork() System Call
 
 ## Terminating a Process
