@@ -72,6 +72,8 @@ The Linux kernel tries four executables, in the following order:
 
 **_4) /bin/sh:_** The location of the Bourne Shell, which the kernel tries to run if it fails to find an init process.
 
+**_Note:_** This list may vary, depending on the implementations.
+
 The first of these processes that exists is executed as the init process.
 
 If all four processes fail to execute; the Linux kernel halts the system with a panic.
@@ -81,6 +83,24 @@ After the handoff from the kernel, the init process handles the remainder of the
 Typically, this includes initializing the system, starting various services, and launching a login program.
 
 ### Process ID allocation
+
+By default, the kernel imposes a maximum process ID value of 32768.
+
+This is for compatibility with older Unix systems, which used signed 16-bi types of process IDs.
+
+System administrators can set the value higher via /proc/sys/kernel/pid_max, trading a larger pid space for reduced
+compatibility.
+
+The kernel allocates process IDs to processes in a strictly linear fashion.
+
+If pid 17 is the highest number currently allocated, pid 18 will be allocated next, even if the process last assigned
+pid 17 is no longer running when the new process starts.
+
+The kernel does not reuse process ID values until it wraps around the top (hat is, earlier values will not be reused 
+until the value in /proc/sys/kernel/pid_max is allocated).
+
+Therefore, while Linux makes no garantee of the uniqueness of process IDs over a long period, its allocation behavior 
+does provide at least short-term comfort is the statbility and uniqueness of pid values.
 
 ### The Process Hierarchy
 
