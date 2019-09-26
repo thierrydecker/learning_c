@@ -359,7 +359,15 @@ Some properties of the process, however, do not change.
 
 For example, the pid, priority, and owning user and group all remain the same.
 
-#include
+Normally, open files are inherited across an exec.
+
+This means the newly executed program has full access to all of the files open in the original process, assuming it 
+knows the file descriptor values.
+
+However, this is often not the desired behavior.
+
+The usual practice is to close files before the exec, althoug it is also possible to instruct the kernel to do so 
+automatically via the **_fcntl()_** function. 
 
 ### The fork() System Call
 
