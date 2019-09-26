@@ -120,22 +120,22 @@ This ownership is used to control access rights to resources.
 
 To the kernel, users and groups are mere integer values.
 
-Through the files ***/etc/paswd*** and ***/etc/group***, these integers are mapped to human-readable strings which Linux users are
-familiar, such as the user ***root*** or the group ***wheel*** (generally speaking, the Linux kernel has no interest in human-readable
-strings, and prefers to identify objects with integers.)
+Through the files ***/etc/paswd*** and ***/etc/group***, these integers are mapped to human-readable strings which Linux 
+sers are familiar, such as the user ***root*** or the group ***wheel*** (generally speaking, the Linux kernel has no 
+interest in human-readable strings, and prefers to identify objects with integers.)
 
 Each child process inherits its parent's user and group ownership.
 
-Each process is also part of a ***process group***, which simply expresses its relationship to other processes and should not be
-confused with the aforementioned user/group concept.
+Each process is also part of a ***process group***, which simply expresses its relationship to other processes and 
+should not be confused with the aforementioned user/group concept.
 
 Children normally belong to the same process group as their parents.
 
-In addition, when a shell starts up a pipeline (e.g., when a user enters ***ls | less***), all the commands in the pipeline go
-into the same process group.
+In addition, when a shell starts up a pipeline (e.g., when a user enters ***ls | less***), all the commands in the 
+pipeline go into the same process group.
 
-The notion of process group makes it easy to send signals or get information on an entire pipeline, as well as all children
-of the process in the pipeline.
+The notion of process group makes it easy to send signals or get information on an entire pipeline, as well as all 
+children of the process in the pipeline.
 
 From the perspective of a user, a process group is closely related to a ***job***.
 
@@ -233,7 +233,133 @@ int main (int argv, char *args[])
 
 ## Running a New Process
 
+In Linux, the act of loading into memory and executing a program image is separate from the act of creating a new 
+process.
+
+One system call loads a binary program into memory, replacing the previous content of the address space, and begins 
+execution of the new program.
+
+This is called executing a new program, and the functionality is provided by the ***exec*** family of call.
+
+A different system call is used to create a new process, which initially is near-duplicate of its parent process.
+
+Often, the new process immediatly executes a new program.
+
+The act of creating a new process is called forking, and this functionality is provided by the fork() system call.
+
+Two acts (first a fork to create a new process, and then an exec to load a new binary into that process) are thus 
+required to execute a new program in a new process.
+
+We will cover the exec call first, then fork().
+
 ### The Exec Family of Calls
+
+There is no single exec function.
+
+Instead, there is a family of exec functions built on a single system call.
+
+Let's first look at the simplest of these calls, _**execl()**_:
+
+```
+#include <unistd.h>
+
+int execl (
+        const char *path,
+        const char *arg,
+        ...
+);
+```
+
+A call to execl() replaces the current process image with a new one by loading into memory the programm pointed at by 
+path.
+
+The parameter arg is the first argument to this program.
+
+The ellipsis signifies a variable number of arguments (the execl() function is variadic, which means that additional
+arguments may optionally follow, one by one).
+
+The list of arguments must be NULL-terminated.
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        int ret;
+        ret = execl ("/bin/vi", "vi", NULL);
+        if (ret == -1) {
+                perror ("execl");
+        }
+        return EXIT_SUCCESS;
+}
+``` 
+
+Note that we follow the Unix convention and pass "vi" as the program's first argument.
+
+The shell puts the last component into the first argument, so a program can examine its first argument, **_argv[0]_** to
+discover its binary image.
+
+In many cases, several several system utilities that appear as different names to the user are in fact a single program
+with hard links for their multiple names.
+
+The program uses this first argument to determine its behavior.
+
+As another example, if you wanted to edit the file /etc/network/interfaces, you could execute the following code:
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        int ret;
+        ret = execl ("/bin/nano", "nano", "/etc/network/interfaces", NULL);
+        if (ret == -1) {
+                perror ("execl");
+        }
+        return EXIT_SUCCESS;
+}
+``` 
+
+Normally, execl() does not return.
+
+A successful invocation ends by jumping to the entry point of the new program, the just-executed code no longer exists
+in the process's address space.
+
+On error, however, **_execl()_** returns -1 end set **_errno_** to indicate the problem.
+
+We will look at the possible **_errno_** values later in this section.
+
+A successful execl() call changes not only the address space and process image, but certain other attributes of the
+process.
+
+- Any pending signals are lost.
+
+- Any signal that the process is catching are returned to their default behavior, as the signal handler no longer exist
+in the process's address space.
+
+- Memory locks are dropped.
+
+- Most thread attributes are returned to their default value.
+
+- Anything related to the process's memory address space, including any mapped files, is cleared.
+
+- Anything that exists solely in user space, including features of the C library, such as atexit() behavior, is cleared.
+
+Some properties of the process, however, do not change.
+
+For example, the pid, priority, and owning user and group all remain the same.
+
+#include
 
 ### The fork() System Call
 
