@@ -798,6 +798,60 @@ Linux implements, the **_atexit()_** library call, used to register functions to
 int atexit (void (*function)(void));
 ```
 
+A successful invocation of **_atexit()_** registers the given function to run during normal process termination, that 
+is, when a process is terminated via either exit() or a return from main(). 
+
+If a process invokes an exec function, the list of registered functions is cleared (as the functions no longer exist 
+in the new process’s address space). 
+
+If a process terminates via a signal, the registered functions are not called.
+
+The given function takes no parameters, and returns no value. A prototype has the form:
+
+```
+void my_function (void);
+```
+
+Functions are invoked in the reverse order that they are registered.
+
+That is, the functions are stored in a stack, and the last in is the first out (LIFO). 
+
+Registered functions must not call exit() lest they begin an endless recursion. 
+
+If a function needs to end the termination process early, it should call _exit() . 
+
+Such behavior is not recommended, however, as a potentially important shutdown function may then not run.
+
+The POSIX standard requires that atexit() support at least ATEXIT_MAX registered functions and that this value be at 
+least 32. 
+
+The exact maximum may be obtained via sysconf() and the value of _SC_ATEXIT_MAX :
+
+```
+long atexit_max;
+atexit_max = sysconf (_SC_ATEXIT_MAX);
+printf ("atexit_max=%ld\n", atexit_max);
+```
+
+On success, atexit() returns 0 . On error, it returns −1 .
+
+Here’s a simple example:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+void out (void)
+{
+        printf ("atexit() succeeded!\n");
+}
+int main (void)
+{
+        if (atexit (out))
+                fprintf (stderr, "atexit() failed!\n");
+        return 0;
+}
+```
+
 ### on_exit()
 
 ### SIGHLD
