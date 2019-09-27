@@ -566,8 +566,9 @@ The new process is called the “child” of the original process, which in turn
 
 In the child, a successful invocation of fork() returns 0.
 
-In the parent, fork() returns the pid of the child. The child and the parent process are identical in nearly every 
-facet, except for a few necessary differences:
+In the parent, fork() returns the pid of the child. 
+
+The child and the parent process are identical in nearly every facet, except for a few necessary differences:
 
 - The pid of the child is, of course, newly allocated and different from that of the parent.
 
@@ -598,24 +599,62 @@ Use is simple:
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "processes.h"
 
 /*
  * Main function
  * */
 int main (int argv, char *args[])
 {
-        pid_t pid;
-        pid = fork ();
-        if (pid > 0) {
-                printf ("I am the parent of pid=%d\n", pid);
-        } else if (!pid) {
+        pid_t forked_pid = fork ();;
+
+        if (forked_pid > 0) {
+                printf ("I am the parent!\n");
+        } else if (forked_pid == 0) {
                 printf ("I am the child!\n");
-        } else if (pid == -1) {
+        } else if (forked_pid < 0) {
                 perror ("fork");
+                return EXIT_FAILURE;
         }
+        process_print ();
         return EXIT_SUCCESS;
 }
 ```
+
+The above snippet could produce:
+
+```
+I am the parent!
+My pid is: 3096
+My parent's pid is: 1089
+I am the child!
+My pid is: 3097
+My parent's pid is: 3096
+```
+
+But could also produce:
+
+```
+I am the parent!
+I am the child!
+My pid is: 3310
+My parent's pid is: 3309
+My pid is: 3309
+My parent's pid is: 906
+```
+
+Or even:
+
+```
+I am the parent!
+My pid is: 3340
+My parent's pid is: 906
+I am the child!
+My pid is: 3344
+My parent's pid is: 1
+```
+
+In this last case, Child's parent doesn't seem to be the process that forked... more on this later.
 
 ## Terminating a Process
 
