@@ -846,8 +846,9 @@ void out (void)
 }
 int main (void)
 {
-        if (atexit (out))
+        if (atexit (out)) {
                 fprintf (stderr, "atexit() failed!\n");
+        }
         return 0;
 }
 ```
@@ -858,6 +859,7 @@ SunOS 4 defined its own equivalent to atexit() , and Linux’s glibc supports it
 
 ```
 #include <stdlib.h>
+
 int on_exit (void (*function)(int, void *), void *arg);
 ```
 
@@ -916,6 +918,7 @@ The simplest such interface, defined by POSIX, is wait():
 ```
 #include <sys/types.h>
 #include <sys/wait.h>
+
 pid_t wait (int *status);
 ```
 
