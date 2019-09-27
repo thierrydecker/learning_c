@@ -606,7 +606,7 @@ Use is simple:
  * */
 int main (int argv, char *args[])
 {
-        pid_t forked_pid = fork ();;
+        pid_t forked_pid = fork ();
 
         if (forked_pid > 0) {
                 printf ("I am the parent!\n");
@@ -655,6 +655,48 @@ My parent's pid is: 1
 ```
 
 In this last case, Child's parent doesn't seem to be the process that forked... more on this later.
+
+One common usage of fork() is to create a new process in which a new binary image is then loaded—think a shell running 
+a new program for the user or a process spawning a helper program. 
+
+First the process forks a new process, and then the child executes a new binary image. This “fork plus exec” combination 
+is frequent and simple.
+
+The following example spawns a new process running the binary /usr/bin/cat:
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+/*
+ * Main function
+ * */
+int main (int argv, char *args[])
+{
+        pid_t forked_pid;
+        forked_pid = fork ();
+        if (forked_pid == -1) {
+                perror ("fork");
+                return EXIT_FAILURE;
+        }
+        /* the child ... */
+        if (forked_pid == 0) {
+                char *const arguments[] = {"cat", "/etc/network/interfaces", NULL};
+                int ret;
+                ret = execv ("/usr/bin/cat", arguments);
+                if (ret == -1) {
+                        perror ("execv");
+                        return EXIT_FAILURE;
+                }
+        }
+        return EXIT_SUCCESS;
+}
+```
+
+The parent process continues running with no change, other than that it now has a new child. 
+
+The call to execv() changes the child to running the /usr/bin/cat program.
 
 ## Terminating a Process
 
