@@ -833,7 +833,7 @@ atexit_max = sysconf (_SC_ATEXIT_MAX);
 printf ("atexit_max=%ld\n", atexit_max);
 ```
 
-On success, atexit() returns 0 . On error, it returns −1 .
+On success, atexit() returns 0. On error, it returns −1 .
 
 Here’s a simple example:
 
@@ -854,9 +854,60 @@ int main (void)
 
 ### on_exit()
 
+SunOS 4 defined its own equivalent to atexit() , and Linux’s glibc supports it:
+
+```
+#include <stdlib.h>
+int on_exit (void (*function)(int, void *), void *arg);
+```
+
+This function works the same as atexit(), but the registered function’s prototype is different:
+
+```
+void my_function (int status, void *arg);
+```
+
+The status argument is the value passed to exit() or returned from main(). The arg argument is the second parameter 
+passed to on_exit().
+
+Care must be taken to ensure that the memory pointed at by arg is valid when the function is ultimately invoked.
+
+The latest version of Solaris no longer supports this function. You should use the standards-compliant atexit() instead.
+
 ### SIGHLD
 
+When a process terminates, the kernel sends the signal SIGCHLD to the parent. By default, this signal is ignored, and 
+no action is taken by the parent.
+
+Processes can elect to handle this signal, however, via the signal() or sigaction() system calls. 
+
+These calls, and the rest of the wonderful world of signals, are covered in a later chapter.
+
+The SIGCHLD signal may be generated and dispatched at any time, as a child’s termination is asynchronous with respect 
+to its parent. But often, the parent wants to learn more about its child’s termination or even explicitly wait for 
+the event’s occurrence. 
+
+This is possible with the system calls discussed next.
+
 ### Waiting for Terminated Child Processes
+
+Receiving notification via a signal is nice, but many parents want to obtain more information when one of their child 
+processes terminates (for example, the child’s return value).
+
+If a child process were to entirely disappear when terminated, as one might expect, no remnants would remain for the 
+parent to investigate. 
+
+Consequently, the original designers of Unix decided that when a child dies before its parent, the kernel should put
+the child into a special process state. A process in this state is known as a zombie. 
+
+Only a minimal skeleton of what was once the process (some basic kernel data structures containing potentially useful 
+data) is retained. 
+
+A process in this state waits for its parent to inquire about its status (a procedure known as waiting on the zombie 
+process). 
+
+Only after the parent obtains the information preserved about the terminated child does the process formally exit and 
+cease to exist even as a zombie.
 
 ### Waiting for a Specific Process
 
