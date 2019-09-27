@@ -731,8 +731,8 @@ exit (EXIT_SUCCESS);
 
 Before terminating the process, the C library performs the following shutdown steps, in order:
 
-- Call any functions registered with atexit() or on_exit() , in the reverse order of their registration. (We will 
-discuss these functions later in this chapter.)
+- Call any functions registered with **_atexit()_** or **_on_exit()_** , in the reverse order of their registration. (We will 
+discuss these functions later in this chapter).
 
 - Flush all open standard I/O streams.
 
@@ -756,8 +756,8 @@ After cleanup, the kernel destroys the process and notifies the parent of its ch
 Applications can call _exit() directly, but such a move seldom makes sense: most applications need to do some of the 
 cleanup provided by a full exit, such as flushing the stdout stream. 
 
-In a redundant stroke of redundancy, the ISO C99 standard added the _Exit() function, which has identical behavior to 
-_exit() :
+In a redundant stroke of redundancy, the ISO C99 standard added the **__Exit()_** function, which has identical behavior
+to **__exit()_** :
 
 ```
 #include <stdlib.h>
@@ -790,6 +790,13 @@ The kernel can kill a process for executing an illegal instruction, causing a se
 memory, consuming more resources that allowed, and so on.
 
 ### atexit()
+
+Linux implements, the **_atexit()_** library call, used to register functions to be invoked upon process termination:
+
+```
+#include <stdlib.h>
+int atexit (void (*function)(void));
+```
 
 ### on_exit()
 
