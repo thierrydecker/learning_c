@@ -56,7 +56,7 @@ The Standard Library modules math.h and string.h are good examples of clearly di
 
 Always use “include guards” in a header file.
 
-The most compact form uses #ifndef.
+The most compact form uses \#ifndef.
 
 Choose a guard symbol based on the header file name, since these symbols are easy to think up and the header file names 
 are almost always unique in a project. 
@@ -86,7 +86,7 @@ trouble.
 All of the declarations needed to use a module must appear in its header file, and this file is always used to access 
 the module.
 
-Thus #including the header file provides all the information necessary for code using the module to compile and link 
+Thus \#including the header file provides all the information necessary for code using the module to compile and link 
 correctly.
 
 Furthermore, if module A needs to use module X’s functionality, it should always \#include "X.h" , and never contain 
