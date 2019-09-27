@@ -700,7 +700,94 @@ The call to execv() changes the child to running the /usr/bin/cat program.
 
 ## Terminating a Process
 
+POSIX and C89 both define a standard function for terminating the current process:
+
+```
+#include <stdlib.h>
+void exit (int status);
+```
+A call to exit() performs some basic shutdown steps, then instructs the kernel to terminate the process. 
+
+This function has no way of returning an error—in fact, it never returns at all. 
+
+Therefore, it does not make sense for any instructions to follow the exit() call.
+
+The status parameter is used to denote the process’s exit status. 
+Other programs (as well as the user at the shell) can check this value. 
+
+Specifically, status & 0377 is returned to the parent. 
+
+We will look at retrieving the return value later in this chapter.
+
+EXIT_SUCCESS and EXIT_FAILURE are defined as portable ways to represent success and failure. 
+
+On Linux, 0 typically represents success; a nonzero value, such as 1 or −1 , corresponds to failure.
+
+Consequently, a successful exit is as simple as this one-liner:
+
+```
+exit (EXIT_SUCCESS);
+```
+
+Before terminating the process, the C library performs the following shutdown steps, in order:
+
+- Call any functions registered with atexit() or on_exit() , in the reverse order of their registration. (We will 
+discuss these functions later in this chapter.)
+
+- Flush all open standard I/O streams.
+
+- Remove any temporary files created with the **_tmpfile()_** function.
+
+These steps finish all the work the process needs to do in user space, so exit() invokes the system call _exit() to let 
+the kernel handle the rest of the termination process:
+
+```
+#include <unistd.h>
+void _exit (int status);
+```
+
+When a process exits, the kernel cleans up all of the resources that it created on the process’s behalf that are no 
+longer in use. 
+
+This includes, but is not limited to, allocated memory, open files, and System V semaphores. 
+
+After cleanup, the kernel destroys the process and notifies the parent of its child’s demise.
+
+Applications can call _exit() directly, but such a move seldom makes sense: most applications need to do some of the 
+cleanup provided by a full exit, such as flushing the stdout stream. 
+
+In a redundant stroke of redundancy, the ISO C99 standard added the _Exit() function, which has identical behavior to 
+_exit() :
+
+```
+#include <stdlib.h>
+void _Exit (int status);
+```
+
 ### Other Ways to Terminate
+
+The classic way to end a program is not via an explicit system call, but by simply “falling off the end” of the program. 
+
+In the case of C, this happens when the main() function returns. 
+
+The “falling off the end” approach, however, still invokes a system call:
+
+The compiler simply inserts an implicit call to exit() after its own shutdown code. 
+
+It is good coding practice to explicitly return an exit status, either via exit(), or by returning a value from main(). 
+
+The shell uses the exit value for evaluating the success or failure of commands. 
+
+Note that a successful return is exit(0), or a return from main() of 0.
+
+A process can also terminate if it is sent a signal whose default action is to terminate the process. 
+
+Such signals include SIGTERM and SIGKILL.
+
+A final way to end a program’s execution is by incurring the wrath of the kernel. 
+
+The kernel can kill a process for executing an illegal instruction, causing a segmentation violation, running out of 
+memory, consuming more resources that allowed, and so on.
 
 ### atexit()
 
