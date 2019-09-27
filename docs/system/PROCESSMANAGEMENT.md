@@ -909,6 +909,79 @@ process).
 Only after the parent obtains the information preserved about the terminated child does the process formally exit and 
 cease to exist even as a zombie.
 
+The Linux kernel provides several interfaces for obtaining information about terminated children. 
+
+The simplest such interface, defined by POSIX, is wait():
+
+```
+#include <sys/types.h>
+#include <sys/wait.h>
+pid_t wait (int *status);
+```
+
+A call to wait() returns the pid of a terminated child or −1 on error. 
+
+If no child has terminated, the call blocks until a child terminates. 
+
+If a child has already terminated, the call returns immediately. 
+
+Consequently, a call to wait() in response to news of a child’s demise—say, upon receipt of a SIGCHLD —will always 
+return without blocking.
+
+On error, there are two possible errno values:
+
+- **_ECHILD_**
+
+    The calling process does not have any children.
+    
+- **_EINTR_**
+
+    A signal was received while waiting, and the call returned early.
+
+If not NULL , the status pointer contains additional information about the child. 
+
+Because POSIX allows implementations to define the bits in status as they see fit, the standard provides a family of 
+macros for interpreting the parameter:
+
+```
+#include <sys/wait.h>
+
+int WIFEXITED (status);
+int WIFSIGNALED (status);
+int WIFSTOPPED (status);
+int WIFCONTINUED (status);
+
+int WEXITSTATUS (status);
+int WTERMSIG (status);
+int WSTOPSIG (status);
+int WCOREDUMP (status);
+```
+
+Either of the first two macros may return true (a nonzero value), depending on how the process terminated. The first, 
+WIFEXITED , returns true if the process terminated normally; that is, if the process called _exit(). 
+
+In this case, the macro WEXITSTATUS provides the low-order eight bits that were passed to _exit().
+
+WIFSIGNALED returns true if a signal caused the process’s termination. 
+
+In this case, WTERMSIG returns the number of the signal that caused the termination, and WCOREDUMP returns true if the 
+process dumped core in response to receipt of the signal. WCOREDUMP is not defined by POSIX, although many Unix systems, 
+Linux included, support it.
+
+WIFSTOPPED and WIFCONTINUED return true if the process was stopped or continued, respectively, and is currently being 
+traced via the ptrace() system call. 
+
+These conditions are generally applicable only when implementing a debugger, although when used with waitpid() (see the 
+following subsection), they are used to implement job control, too.
+
+Normally, wait() is used only to communicate information about a process’s termination. 
+
+If WIFSTOPPED is true, WSTOPSIG provides the number of the signal that stopped the process. 
+
+WIFCONTINUED is not defined by POSIX, although future standards define it for waitpid(). 
+
+As of the 2.6.10 Linux kernel, Linux provides this macro for wait(), too.
+
 ### Waiting for a Specific Process
 
 ### Even More Waiting Versatility
